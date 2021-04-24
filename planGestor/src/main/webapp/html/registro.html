@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Plan Gestor ayuda a gestionar los pqr's">
+    <meta name="keywords" content="gestiona, radica, pqr">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Gestor</title>
+
+    <link rel="shortcut icon" href="../img/favicon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d51e0c6239.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- BARRA DE NAVEGACION -->
+    <header class="container-fluid mx-0 px-0 sticky-top">
+        <nav class="navbar navbar-toggleable-sm navbar-dark bg-dark py-0 px-4">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">
+                <img src="../img/logo.svg" width="100" height="50" class="my-0 mr-auto ml-auto" alt="planGestor-Logo">
+            </a>
+            <div class="btn-group dropleft">
+                <a class="btn dropdown-toggle p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                    <em class="fas fa-user-circle text-light"></em>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <h5 class="dropdown-header w-100 text-center" id="lblNombre">MI NOMBRE</h5>
+                    <div class="d-flex w-100 justify-content-center">
+                        <small class="pl-0 pr-1">ROL : </small>
+                        <small class="p-0" id="lblRol">Supervisor</small>
+                    </div>
+                    <div class="dropdown-divider w-100"></div>
+                    <a class="dropdown-item w-100 text-justify" href="#">Cambiar imagen</a>
+                    <a class="dropdown-item w-100 text-justify" href="#">Ver datos</a>
+                    <a class="dropdown-item w-100 text-justify" href="#">Cerrar sesión</a>
+                </div>
+            </div>
+        </nav>        
+    </header>
+    <!-- FIN DE BARRA DE NAVEGACION -->
+
+        <main>
+            <!-- MENU VERTICAL -->
+            <section class="collapse navbar-collapse navbar-vertical" id="navbarToggler">
+                <ul class="nav d-fex flex-column bg-dark w-100 h-100" >
+                    <li class="nav-item">
+                      <a class="nav-link text-light" href="home.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-light" href="#">Radicados</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-light" href="#">Plantilla</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-light" href="#">Cartas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Formatos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Informes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Vehículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Facturas</a>
+                    </li>
+                </ul>
+            </section>
+            <!-- FIN DEL MENU VERTICAL -->
+
+            <!--CONTENEDOR PRINCIPAL-->
+            <section class="container-fluid">
+
+                <!--GUIA DE NAVEGACION (MIGAJAS DE PAN)-->
+                <div class="row" aria-label="breadcrumb my-2">
+                    <ol class="breadcrumb bg-white">
+                      <li class="breadcrumb-item"><a class="text-danger" href="home.html">Inicio</a></li>
+                      <li class="breadcrumb-item"><a>Usuarios</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Administración de usuarios</li>
+                    </ol>
+                </div>
+                <!--FIN DE LA GUIA DE NAVEGACION (MIGAJAS DE PAN)-->
+
+                <div class="row table-responsive-lg">
+                    <!--TABLA DE USUARIOS-->
+                    <table class="table table-hover">
+                        <caption class="pb-0">Tabla de usuarios</caption>
+
+                        <!-- ENCABEZADOS DE LA TABLA -->
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Cargo</th>
+                            <th scope="col">Usuario</th>
+                          </tr>
+                        </thead>
+                        <!-- FIN DE LOS ENCABEZADOS DE LA TABLA -->
+
+                        <!-- CONTENIDO DE LA TABLA -->
+                        <tbody>
+                          <tr>
+                            <th scope="row"><a href="#" data-toggle="modal" data-target="#EditarUsuarioModal"><em class="fas fa-search text-danger"></em></a></th>
+                            <td>11111111111</td>
+                            <td>Cristian Camilo Espitia</td>
+                            <td>cristian.espitia@gmail.com</td>
+                            <td>Supervisor</td>
+                            <td>CESPITIA</td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><a href="#" data-toggle="modal" data-target="#EditarUsuarioModal"><em class="fas fa-search text-danger"></em></a></th>
+                            <td>22222222</td>
+                            <td>Mayra Alejandra Carreño</td>
+                            <td>alejandra.carreno@gmail.com</td>
+                            <td>Administrador</td>
+                            <td>MCARRENO</td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><a href="#" data-toggle="modal" data-target="#EditarUsuarioModal"><em class="fas fa-search text-danger"></em></a></th>
+                            <td>3333333333</td>
+                            <td>Michael Stally Beleño</td>
+                            <td>michael.beleno@gmail.com</td>
+                            <td>Asesor</td>
+                            <td>MBELENO</td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><a href="#" data-toggle="modal" data-target="#EditarUsuarioModal"><em class="fas fa-search text-danger"></em></a></th>
+                            <td>4444444444</td>
+                            <td>Javier Albertp Gomez</td>
+                            <td>javier.gomez@gmail.com</td>
+                            <td>Asesor</td>
+                            <td>JGOMES</td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><a href="#" data-toggle="modal" data-target="#EditarUsuarioModal"><em class="fas fa-search text-danger"></em></a></th>
+                            <td>555555555555</td>
+                            <td>Luciana Yeldrid Barón</td>
+                            <td>luciana.baron@gmail.com</td>
+                            <td>Asesor</td>
+                            <td>LBARON</td>
+                          </tr>
+                        </tbody>
+                        <!-- FIN DEL CONTENIDO DE LA TABLA -->
+
+                    </table>
+
+                    <!-- PIE DE LA TABLA -->
+                    <div aria-label="Page navigation de la tabla" class="w-100">
+                        <ul class="pagination justify-content-center m-0">
+                            <li class="page-item">
+                                <a class="page-link text-danger" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link text-danger" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link text-danger" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link text-danger" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link text-danger" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- FIN DEL PIE DE LA TABLA -->
+
+                </div>
+                <!--FIN DE TABLA DE USUARIOS-->
+                <hr/>
+
+                <!--GRUPO DE BOTONES)-->
+                <div class="row d-flex justify-content-center mt-2">
+                    <button type="button" class="btn btn-red mr-2 my-1 text-light" data-toggle="modal" data-target="#registroUsuarioModal"><em class="fas fa-plus text-light"></em>  Crear usuario</button>
+                    <button type="button" class="btn btn-red ml-2 my-1 text-light"><em class="fas fa-download text-light"></em>  Descargar información</button>
+                </div>
+                <!--FIN DE GRUPO DE BOTONES-->
+            </section>
+
+            <!--Inicio Modal registro-->
+            <section class="modal fade" id="registroUsuarioModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Registro de Usuarios</h4>
+                            <button type="button" class="close btn-close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Fin del Modal Header -->
+
+                        <!-- TABS DE NAVEGACION (PESTAÑAS) -->
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link text-danger active" id="nav-individual-tab" data-toggle="tab" href="#nav-individual" role="tab" aria-controls="nav-individual" aria-selected="true">Individual</a>
+                            <a class="nav-item nav-link text-danger" id="nav-masivo-tab" data-toggle="tab" href="#nav-masivo" role="tab" aria-controls="nav-masivo" aria-selected="false">Masivo</a>
+                        </div>
+                        <!-- FIN DE LOS TABS DE NAVEGACION -->
+
+                        
+                            
+                        <!-- CONTENIDO DE LAS PESTAÑAS -->
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-individual" role="tabpanel" aria-labelledby="nav-individual-tab">
+                                    
+                                <!-- FORMULARIO Y CUERPO DE LA PRIMERA PESTAÑA -->
+                                <form action="" method="POST" id="formRegistroIndividual" name="formRegistroIndividual" class="needs-validation" novalidate>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="txtDocumentoRegistro">Documento de identidad</label>
+                                                <input type="text" class="form-control" id="txtDocumentoRegistro" name="txtDocumentoRegistro" minlength="8" maxlength="20" pattern="^[0-9]{8,20}$" autocomplete="off" autocapitalize="characters" required>
+                                        <div class="invalid-feedback text-justify">El campo debe tener mínimo 8 caracteres y solo puede contener números.</div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="txtCargoRegistro">Cargo</label>
+                                                <select class="custom-select" name="cboCargoRegistro" id="cboCargoRegistro" required>
+                                                    <option value="" selected>Seleccione...</option>
+                                                    <option value="Asesor">Asesor</option>
+                                                    <option value="Supervisor">Supervisor</option>
+                                                    <option value="Administrador">Administrador</option>
+                                                </select>
+                                                <div class="invalid-feedback text-justify">Debe escoger una de las opciones disponibles.</div>
+                                            </div>                                    
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="txtNombresRegistro">Nombres</label>
+                                                <input type="text" class="form-control" id="txtNombresRegistro" name="txtNombresRegistro" minlength="5" maxlength="15" pattern="^[A-Za-z ]{5,15}$" autocomplete="off" autocapitalize="characters" required>
+                                        <div class="invalid-feedback text-justify">El campo debe tener mínimo 5 caracteres y solo puede contener letras.</div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="txtApellidosRegistro">Apellidos</label>
+                                                <input type="text" class="form-control" id="txtApellidosRegistro" name="txtApellidosRegistro" minlength="10" maxlength="25" pattern="^(?=.*[A-Za-z ]){10,25}$" autocomplete="off" autocapitalize="characters" required>
+                                        <div class="invalid-feedback text-justify">El campo debe tener mínimo 10 caracteres y solo puede contener letras.</div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="txtClaveRegistro1">Contraseña</label>
+                                                <div class="input-group groupPasswordLogin">
+                                                    <input type="password" class="form-control" id="txtClaveRegistro1" name="txtClaveRegistro1" minlength="8" maxlength="16" pattern="^(?=.*\d)(?=.*[\u0021-\u002f\u003a-\u0040\u005e-\u005f])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$" autocomplete="off" required></input>
+                                                    <div class="input-group-prepend bg-white border-left-0">
+                                                        <div class="input-group-text bg-white border-left-0">
+                                                            <a href="#" class="text-dark bg-white border-left-0"><em class="fas fa-eye-slash"></em></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="invalid-feedback text-justify">La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un símbolo.</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="txtClaveRegistro2">Confirmar Contraseña</label>
+                                                <div class="input-group groupPasswordLogin">
+                                                    <input type="password" class="form-control" id="txtClaveRegistro2" name="txtClaveRegistro2" minlength="8" maxlength="16" pattern="^(?=.*\d)(?=.*[\u0021-\u002f\u003a-\u0040\u005e-\u005f])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$" autocomplete="off" required></input>
+                                                    <div class="input-group-prepend bg-white border-left-0">
+                                                        <div class="input-group-text bg-white border-left-0">
+                                                            <a href="#" class="text-dark bg-white border-left-0"><em class="fas fa-eye-slash"></em></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="invalid-feedback text-justify">La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un símbolo.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="txtTelefonoRegistro">Telefono</label>
+                                                <input type="text" class="form-control" id="txtTelefonoRegistro" name="txtTelefonoRegistro" minlength="5" maxlength="15" pattern="^[0-9]{5,15}$" autocomplete="off" autocapitalize="characters" required>
+                                                <div class="invalid-feedback text-justify">El campo debe tener mínimo 5 caracteres y solo puede contener números.</div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="txtCorreoRegistro">Correo</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <a href="#" class="text-dark"><em class="fas fa-at"></em></a>
+                                                        </div>
+                                                    </div>
+                                                    <input type="email" name="txtCorreoRegistro" id="txtCorreoRegistro" class="form-control" placeholder="E-mail" minlength="8" maxlength="30" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" autocomplete="off" autocapitalize="characters" required>
+                                                    <div class="invalid-feedback text-justify">El correo ingresado no es valido</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- FOOTER DEL MODAL -->
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-secondary btn-close" data-dismiss="modal" value="Cerrar">
+                                        <input type="submit" class="btn btn-red text-light" value="Registrar">
+                                    </div>
+                                    <!-- FIN DEL FOOTER DEL MODAL -->
+
+                                </form>
+                                <!-- FIN FORMULARIO PARA LA PRIMERA PESTAÑA -->
+                            </div>
+                                
+                                
+                            <!-- CUERPO DEL MODAL PARA LA SEGUNDA PESTAÑA -->
+                            <div class="tab-pane fade" id="nav-masivo" role="tabpanel" aria-labelledby="nav-masivo-tab">
+                                <form action="" method="POST" id="formRegistroMasivo" name="formRegistroMasivo" class="needs-validation" novalidate>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="txtArchivoRegistro">Seleccione un archivo:</label>
+                                            <input name="txtArchivoRegistro" id="txtArchivoRegistro" type="file" class="form-control" accept="text/csv" required>
+                                            <div class="invalid-feedback text-justify">No hay ha seleccionado algún archivo.</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- FOOTER DEL MODAL -->
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-secondary btn-close" data-dismiss="modal" value="Cerrar">
+                                        <input type="submit" class="btn btn-red text-light" value="Registrar">
+                                    </div>
+                                    <!-- FIN DEL FOOTER DEL MODAL -->
+
+                                </form>
+                            </div>
+                                <!-- FIN DEL CUERPO DEL MODAL PARA LA SEGUNDA PESTAÑA -->
+
+                        </div>
+                        <!-- FIN DEL CONTENIDO DE LAS PESTAÑAS -->
+                    </div>
+                </div>
+            </section>
+            <!--FIN MODAL DE REGISTRO-->
+
+            <!-- MODAL PARA EDITAR UN USUARIO -->
+            <section class="modal fade" id="EditarUsuarioModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- ENCABEZADO DEL MODAL -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Registro de Usuarios</h4>
+                            <button type="button" class="close btn-close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- FIN DEL ENCABEZADO DEL MODAL -->
+
+                        <!-- FORMULARIO Y CUERPO DEL MODAL -->
+                        <form action="" method="POST" id="formEdicion" name="formEdicion" class="needs-validation" novalidate>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="txtDocumentoEdicion">Documento de identidad</label>
+                                        <input type="text" class="form-control" id="txtDocumentoEdicion" name="txtDocumentoEdicion" minlength="8" maxlength="20" pattern="^[0-9]{8,20}$" autocomplete="off" autocapitalize="characters" required>
+                                        <div class="invalid-feedback text-justify">El campo debe tener mínimo 8 caracteres y solo puede contener números.</div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="txtCargoEdicion">Cargo</label>
+                                        <select class="custom-select" name="txtCargoEdicion" id="txtCargoEdicion" required>
+                                            <option value="" selected>Seleccione...</option>
+                                            <option value="Asesor">Asesor</option>
+                                            <option value="Supervisor">Supervisor</option>
+                                            <option value="Administrador">Administrador</option>
+                                        </select>
+                                        <div class="invalid-feedback text-justify">Debe escoger una de las opciones disponibles.</div>
+                                    </div>                                    
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="txtNombresEdicion">Nombres</label>
+                                        <input type="text" class="form-control" id="txtNombresEdicion" name="txtNombresEdicion" minlength="5" maxlength="15" pattern="^[A-Za-z ]{5,15}$" autocomplete="off" autocapitalize="characters" required>
+                                        <div class="invalid-feedback text-justify">El campo debe tener mínimo 5 caracteres y solo puede contener letras.</div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="txtApellidosEdicion">Apellidos</label>
+                                        <input type="text" class="form-control" id="txtApellidosEdicion" name="txtApellidosEdicion" minlength="10" maxlength="25" pattern="^(?=.*[A-Za-z ]){10,25}$" autocomplete="off" autocapitalize="characters" required>
+                                        <div class="invalid-feedback text-justify">El campo debe tener mínimo 10 caracteres y solo puede contener letras.</div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="txtClaveEdicion1">Contraseña</label>
+                                        <div class="input-group groupPasswordLogin">
+                                            <input type="password" class="form-control" id="txtClaveEdicion1" name="txtClaveEdicion1" minlength="8" maxlength="16" pattern="^(?=.*\d)(?=.*[\u0021-\u002f\u003a-\u0040\u005e-\u005f])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$" autocomplete="off" required></input>
+                                            <div class="input-group-prepend bg-white border-left-0">
+                                                <div class="input-group-text bg-white border-left-0">
+                                                    <a href="#" class="text-dark bg-white border-left-0"><em class="fas fa-eye-slash"></em></a>
+                                                </div>
+                                            </div>
+                                            <div class="invalid-feedback text-justify">La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un símbolo.</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="txtClaveEdicion2">Confirmar Contraseña</label>
+                                        <div class="input-group groupPasswordLogin">
+                                            <input type="password" class="form-control" id="txtClaveEdicion2" name="txtClaveEdicion2" minlength="8" maxlength="16" pattern="^(?=.*\d)(?=.*[\u0021-\u002f\u003a-\u0040\u005e-\u005f])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$" autocomplete="off" required></input>
+                                            <div class="input-group-prepend bg-white border-left-0">
+                                                <div class="input-group-text bg-white border-left-0">
+                                                    <a href="#" class="text-dark bg-white border-left-0"><em class="fas fa-eye-slash"></em></a>
+                                                </div>
+                                            </div>
+                                            <div class="invalid-feedback text-justify">La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un símbolo.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="txtTelefonoEdicion">Telefono</label>
+                                        <input type="text" class="form-control" id="txtTelefonoEdicion" name="txtTelefonoEdicion" minlength="5" maxlength="15" pattern="^[0-9]{5,15}$" autocomplete="off" autocapitalize="characters" required>
+                                        <div class="invalid-feedback text-justify">El campo debe tener mínimo 5 caracteres y solo puede contener números.</div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="txtCorreoEdicion">Correo</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <a href="#" class="text-dark"><em class="fas fa-at"></em></a>
+                                                </div>
+                                            </div>
+                                            <input type="email" name="txtCorreoEdicion" id="txtCorreoEdicion" class="form-control" placeholder="E-mail" minlength="8" maxlength="30" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" autocomplete="off" autocapitalize="characters" required>
+                                            <div class="invalid-feedback text-justify">El correo ingresado no es valido</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FINAL FORMULARIO Y CUERPO DEL MODAL -->
+
+                            <!-- FOOTER DEL MODAL -->
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-secondary btn-close" data-dismiss="modal" value="Cerrar">
+                                <input type="button" class="btn btn-red text-light" value="Eliminar">
+                                <input type="submit" class="btn btn-red text-light" value="Editar">
+                            </div>
+                            <!-- FIN DEL FOOTER DEL MODAL -->
+
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <!-- FIN MODAL PARA EDITAR UN USUARIO -->
+        </main>
+        <!--Fin main-->
+
+        <!--Inicio footer-->
+        <footer class="container-fluid mt-4 pt-4 bg-light mt-0 pt-0">
+            <div class="row bg-dark justify-content-center text-light">
+                <h6 class="m-0">Copyright &copy; 2021 - All Rights Reserved</h6>
+            </div>
+        </footer>
+        <!--Fin footer-->
+
+        <script type="text/javascript" src="../js/funcionesToForm.js"></script>
+</body>
+
+</html>

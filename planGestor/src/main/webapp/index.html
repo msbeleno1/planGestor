@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Plan Gestor ayuda a gestionar los pqr's">
+    <meta name="keywords" content="gestiona, radica, pqr">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Gestor</title>
+
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d51e0c6239.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <header class="container-fluid mx-0 px-0 fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-toggleable-sm px-3 py-0" role="navigation">
+            
+            <!-- BOTON DEL MENU RESPONSIVO QUE ACTIVA EL COLLAPSE -->
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+             <!-- MARCA CORPORATIVA -->
+             <a class="navbar-brand ml-auto py-0" href="index.html">
+                <img src="img/logo.svg" width="100" height="50" class="my-0" alt="planGestor-Logo">
+            </a>
+
+            <!-- COLLAPSE NOS AYUDA CON EL MENU RESPONSIVO -->
+            <div class="collapse navbar-collapse" id="navbarToggler">
+
+                <!-- OPCIONES DEL MENÚ -->
+                <ul class="navbar-nav ml-auto align-items-center">
+                    <li class="nav-item w-100">
+                        <a class="nav-link text-danger h-100 text-center" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link text-danger h-100 text-center" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link text-danger h-100 text-center btn-modal" data-toggle="modal" data-target="#contactoModal" href="#contactoModal">Contactenos</a>
+                    </li>
+                    <li class="nav-item bg-dark rounded ml-1 my-2 w-100">
+                        <a class="btn btn-dark rounded text-light w-100 h-100 text-center text-nowrap btn-modal" data-toggle="modal" data-target="#modalLogin" href="#modalLogin"><em class="fas fa-sign-in-alt"></em> Iniciar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SECCION DE MODALES -->
+    <section>
+
+        <!-- MODAL DE LOGIN -->
+        <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLoginTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLoginTitle">Inicio de sesión</h5>
+                  <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="validarLogin" method="POST" id="formLogin" name="formLogin" class="needs-validation" novalidate>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="txtUsuario" class="col-form-label">Usuario:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <a href="#" class="text-dark"><em class="fas fa-user"></em></a>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="txtUsuario" name="txtUsuario" minlength="5" maxlength="15" pattern="^[A-Za-z ]{5,15}$" autocomplete="off" autocapitalize="characters" required>
+                                <div class="invalid-feedback text-justify">El nombre de usuario debe tener mínimo 5 caracteres y solo puede contener letras.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtClave" class="col-form-label">Contraseña:</label>
+                            <div class="input-group groupPasswordLogin">
+                                <input type="password" class="form-control" id="txtClave" name="txtClave" minlength="8" maxlength="16" pattern="^(?=.*\d)(?=.*[\u0021-\u002f\u003a-\u0040\u005e-\u005f])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$" autocomplete="off" required></input>
+                                <div class="input-group-prepend bg-white border-left-0">
+                                    <div class="input-group-text bg-white border-left-0">
+                                        <a href="#" class="text-dark bg-white border-left-0"><em class="fas fa-eye-slash"></em></a>
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback text-justify">La contraseña debe tener al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un símbolo.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-red text-light">Iniciar sesión</button>
+                        <div class="text-danger d-none text-justify" id="msg-error">El usuario y/o la contraseña son incorrectos</div>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- FIN DE MODAL LOGIN -->
+
+          <!-- MODAL DE CONTACTO -->
+          <div class="modal fade" id="contactoModal" tabindex="-1" role="dialog" aria-labelledby="contactoModalTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="contactoModalTitle">Enviar correo de contacto</h5>
+                  <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form method="POST" action="" class="needs-validation" name="formContacto" id="formContacto" novalidate>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="txtNombreContacto">Nombre</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <a href="#" class="text-dark"><em class="fab fa-amilia"></em></a>
+                                    </div>
+                                </div>
+                                <input type="text" name="txtNombreContacto" id="txtNombreContacto" class="form-control" minlength="5" maxlength="20" pattern="^[A-Za-z ]{5,20}$" placeholder="Nombre" autocomplete="off" autocapitalize="characters" required autofocus>
+                                <div class="invalid-feedback text-justify">El nombre de usuario debe tener mínimo 5 caracteres y solo puede contener letras.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCorreoContacto">Correo</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <a href="#" class="text-dark"><em class="fas fa-at"></em></a>
+                                    </div>
+                                </div>
+                                <input type="email" name="txtCorreoContacto" id="txtCorreoContacto" class="form-control" placeholder="E-mail" minlength="8" maxlength="30" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" autocomplete="off" autocapitalize="characters" required>
+                                <div class="invalid-feedback text-justify">El correo ingresado no es valido</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtMensajeContacto">Mensaje</label>
+                            <textarea class="w-100" name="txtMensajeContacto" id="txtMensajeContacto" placeholder="Escriba su mensaje" form="formContacto" rows="6" spellcheck="checked" required></textarea>
+                            <div class="invalid-feedback text-justify">El campo "Mensaje" no puede estar vacío</div>
+                        </div>                      
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-red text-light">Enviar</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- FIN DE MODAL DE CONTACTO -->
+    </section>
+    <!-- FIN DE SECCION DE MODALES -->
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container-fluid px-0 mx-0 mb-4">
+
+        <!-- PANEL DE INICIO -->
+        <section id="inicio" class="jumbotron jumbotron-fluid mt-0 mb-4 px-0 text-center align-content-center py-0">
+            <div class="container-fluid min-vh-100">
+                <h1 class="display-4 font-weight-bold">Bienvenidos a plan gestor!</h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <a class="btn btn-lg text-light" data-toggle="modal" data-target="#modalLogin" href="#modalLogin" role="button">Iniciar sesión</a>
+            </div>
+        </section>
+        <!-- FIN DEL PANEL DE INICIO -->
+
+        <!-- PANEL DE SERVICIOS -->
+        <section id="servicios" class="container-fluid my-4">
+            <div class="row">
+                <div class="col-md">
+                    <h1 class="display-4 text-center"> Servicios</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md mb-4">
+                    <p class="lead"> Nuestro sistema fue pensado para facilitar el trabajo de las pequeñas, medianas y grandes empresas. Se enfoca en la gestión y administración de solicitudes realizadas por el cliente.</p>
+                </div>
+            </div>
+            <div class="row justify-content-evenly flex-wrap">
+                <div class="col-lg-4 mt-3 px-0 mx-0">
+                    <div class="card mx-auto" style="width: 25rem;">
+                        <img class="card-img-top" src="img/imagen1.jpg" alt="Card image 1">
+                        <div class="card-body">
+                          <h5 class="card-title">Servicio 1</h5>
+                          <p class="card-text text-justify">Es un hecho establecido desde hace mucho tiempo que un lector se dist una página cuando mire su diseño. El punto de usar Lorem Ipsum es que más o menos normal, en lugar de usar 'Contenido aquí, contenido aquí'</p>
+                          <button class="btn text-light" type="button" data-toggle="collapse" data-target="#collapseServicio1" aria-expanded="false" aria-controls="collapseServicio1">
+                            Button with data-target
+                          </button>
+                        </div>
+                        <div class="collapse" id="collapseServicio1">
+                            <div class="card card-body">
+                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3 px-0 mx-0">
+                    <div class="card mx-auto px-0" style="width: 25rem;">
+                        <img class="card-img-top" src="img/servicio2.jpg" alt="Card image 2">
+                        <div class="card-body">
+                          <h5 class="card-title">Servicio 2</h5>
+                          <p class="card-text text-justify">Es un hecho establecido desde hace mucho tiempo que un lector se dist una página cuando mire su diseño. El punto de usar Lorem Ipsum es que más o menos normal, en lugar de usar 'Contenido aquí, contenido aquí'</p>
+                          <button class="btn text-light" type="button" data-toggle="collapse" data-target="#collapseServicio2" aria-expanded="false" aria-controls="collapseServicio2">
+                            Button with data-target
+                          </button>
+                        </div>
+                        <div class="collapse" id="collapseServicio2">
+                            <div class="card card-body">
+                              2 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-3 px-0 mx-0">
+                    <div class="card mx-auto" style="width: 25rem;">
+                        <img class="card-img-top" src="img/servicio3.jpg" alt="Card image 3">
+                        <div class="card-body">
+                          <h5 class="card-title">Servicio 3</h5>
+                          <p class="card-text text-justify">Es un hecho establecido desde hace mucho tiempo que un lector se dist una página cuando mire su diseño. El punto de usar Lorem Ipsum es que más o menos normal, en lugar de usar 'Contenido aquí, contenido aquí'</p>
+                          <button class="btn text-light" type="button" data-toggle="collapse" data-target="#collapseServicio3" aria-expanded="false" aria-controls="collapseServicio3">
+                            Button with data-target
+                          </button>
+                        </div>
+                        <div class="collapse" id="collapseServicio3">
+                            <div class="card card-body">
+                              3 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FIN DEL PANEL DE SERVICIOS -->
+    </main>
+
+    <footer class="container-fluid mt-4 pt-4 bg-light">
+        <hr>
+        <div class="row justify-content-around flex-wrap">
+            <div class="col-sm-3 align-items-center d-none d-sm-none d-lg-block">
+                <img class="justify-self-center w-50" src="img/logo.svg" alt="planGestor-Logo">
+            </div>
+            <div class="col-sm-3 mx-3 px-3">
+                <h3 class="lead text-justify font-weight-bold">
+                    Temas relacionados
+                </h3>
+                <ul class="lista-footer text-justify">
+                    <li><a href="#servicios" class="text-dark">Servicios</a></li>
+                    <li><a href="#contactoModal" data-toggle="modal" data-target="#contactoModal" class="text-dark">Contactenos</a></li>
+                    <li><a href="#modalLogin" data-toggle="modal" data-target="#modalLogin" class="text-dark text-nowrap">Iniciar sesión</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3 mx-3 px-3">
+                <h3 class="lead text-justify font-weight-bold">
+                    Contacto desarrolladores
+                </h3>
+                <ul class="lista-footer text-justify flex-wrap">
+                    <li><a href="#" class="text-dark text-justify text-nowrap" data-toggle="tooltip" data-placement="right" title="Correo: ccespitia47@misena.edu.co">Cristian Camilo Espitia</a></li>
+                    <li><a href="#" class="text-dark text-nowrap" data-toggle="tooltip" data-placement="right" title="Correo: msbeleno1@misena.edu.co">Michael Stally Beleño</a></li>
+                    <li><a href="#" class="text-dark text-nowrap" data-toggle="tooltip" data-placement="right" title="Correo: macarreo7@misena.edu.co">Mayra Alejandra Carreño</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row bg-dark justify-content-center text-light">
+            <h6>Copyright &copy; 2021 - All Rights Reserved</h6>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="js/ajaxForLogin.js"></script>
+    <script type="text/javascript" src="js/funcionesToForm.js"></script>
+</body>
+
+</html>
