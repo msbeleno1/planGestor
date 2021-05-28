@@ -11,7 +11,6 @@ public static Connection getConectionToDatabase() {
 		try {
 			// load the driver class
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			System.out.println("MySQL JDBC Driver Registered");
 			
 			// get the DriverManager
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdplangestor", "plangestor", "plangestor2021.");
@@ -25,7 +24,6 @@ public static Connection getConectionToDatabase() {
 			e.printStackTrace();
 		} // end try catch
 		
-		System.out.println("Connection to made to DB!");
 		return connection;
 	}
 

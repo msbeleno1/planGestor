@@ -1,7 +1,7 @@
 package controlador;
 
 import java.io.IOException;
-/*import java.util.*;*/
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,17 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.JsonObject;
+
 import modelo.DAO.usuarioDAO;
 import modelo.VO.usuarioVO;
-/*import token.tokenJWT;*/
+import util.algoritmoSHA256;
 
 /**
  * Servlet implementation class validaLogin
  */
-@WebServlet("/validaLogin")
+@WebServlet(asyncSupported = true, urlPatterns = { "/validaLogin" })
 public class validaLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+       
 	private usuarioDAO userDAO;
     private algoritmoSHA256 encriptador;
     private usuarioVO usuarioVo;
@@ -37,47 +39,29 @@ public class validaLogin extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String username = request.getParameter("txtUsuario").toUpperCase();
+		String username = request.getParameter("txtUsuario");
 	    String password = request.getParameter("txtClave");
 	    
-	    /*List<String> list = new ArrayList<>();*/
+	    PrintWriter out = response.getWriter();
+	    response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+		
+		JsonObject json = new JsonObject();
 	    
 	    if(!username.equals("") && !password.equals("")) {
 	    	password = encriptador.getSHA256(password).toUpperCase();
 	    	usuarioVo = userDAO.buscarUsuarioLogin(username, password);
 	    	
-	    	if(usuarioVo != null) {
-	    		response.sendRedirect("https://localhost:8090/nuevo/html/home.html");
+	    	if(usuarioVo.getRol() != null) {
+	    		json.addProperty("Rol", usuarioVo.getRol());
 	    	}
 	    	else {
-	    		response.getWriter().write("NULL");
+	    		json.addProperty("Rol", "Ninguno");
 	    	}
 	    }
 	    
-	    /*if(!username.equals("") && !password.equals("")) {
-	    	password = encriptador.getSHA256(password).toUpperCase();
-	    	usuarioVo = userDAO.buscarUsuarioLogin(username, password);
-	    	
-	    	
-	    	tokenJWT miToken = new tokenJWT(usuarioVo);
-	    	String token = miToken.getToken();
-	    	
-	    	list.add(usuarioVo.getUsuario());
-	    	list.add(usuarioVo.getRol());
-	    	list.add(token);    	
-	    }
-	    else
-	    	list.add(null);
-	    
-	    
-	    try {
-	    	String json = new Gson().toJson(list);
-		    response.setContentType("application/json");
-		    response.setCharacterEncoding("UTF-8");
-		    response.getWriter().write(json);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
+	    out.print(json);
+	    out.flush();
 	}
 
 }

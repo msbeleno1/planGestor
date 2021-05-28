@@ -1,8 +1,28 @@
-#navbarToggler ul li:hover{
-    background-color: rgba(119, 119, 119, 0.637);
-    border-radius: 5px;
-    color: #FFFFFF;
+/*---------------------- CLASES PERSONALIZADAS ----------------------*/
+*{
+    font-family: 'Titillium Web', sans-serif;
 }
+
+.lead{
+    font-family: 'Titillium Web', sans-serif !important;
+}
+
+.btn-red{
+    background-color: rgb(161, 7, 7);
+}
+
+.bg-red{
+    background-color: rgb(161, 7, 7);
+}
+
+.aling-text-center{
+    align-self: center;
+}
+
+.w-129px{
+    width: 129px;
+}
+
 
 /*---------------------- BOTON ROJO DE LOS MODALES ---------------------------*/
 .modal-footer .btn-red{
@@ -12,7 +32,7 @@
 
 /*---------------------- PERSONALIZACION DEL JUMBOTRON ----------------------*/
 .jumbotron{
-    background-image: url(../img/bannerprincipal.jpg);
+    /*background-image: url(../img/bannerprincipal.jpg);*/
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgb(80, 80, 80);
@@ -84,7 +104,7 @@ footer h6{
     z-index: 10;
 }
 
-.dropdown-toggle .fas{
+.dropdown .fas{
     font-size: 30px;
 }
 
@@ -96,12 +116,102 @@ footer h6{
 
 /*------------------- MAIN PERSONALIZADO ---------------*/
 
-div .btn-red{
-    background-color:rgb(161, 7, 7);
-    color:rgb(223, 223, 223);
+.btn-red:hover,
+.btn-red:hover > em{
+    color: rgb(161, 7, 7);
+    background-color:rgb(179, 178, 178);
 }
 
-.btn-red:hover{
-    background-color:rgb(77, 77, 77);
-    color: rgb(223, 223, 223);
+div .btn-red{
+    color:rgb(223, 223, 223);
+    background-color:rgb(161, 7, 7);
+}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+/*                                  ESTILOS PAGINAS DE SELECION DE CARTAS                                */
+
+/*------------------- COLORES DE CARTAS PERSONALIZADO ---------------*/
+.card-img-top{
+    color: rgb(221, 159, 159);
+}
+
+.card-title{
+    color: rgb(161, 7, 7);
+}
+
+.card-text {
+    color: #000;
+}
+
+.card:hover > .card-img-top,
+.card:hover > .card-text,
+.card:hover >.card-title,
+.card:active > .card-img-top,
+.card:active > .card-text,
+.card:active > .card-title{
+    color: rgb(161, 7, 7);
+}
+
+
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+/*                                  ESTILOS PAGINAS DE CONSULTA PQR                               */
+
+/*------------------- COLORES DE TABLAS PERSONALIZADOS ---------------*/
+.page-link{
+    color: rgb(161, 7, 7) !important;
+}
+
+.page-item:hover,
+.page-link:hover{
+    background-color:rgb(161, 7, 7) !important;
+    color:rgb(223, 223, 223) !important;
+}
+
+/*------------------- ENCABEZADO DE LA TABLA FIJO ARRIBA ---------------*/
+
+thead tr th { 
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.table-gestionar { 
+    height:400px;
+    overflow:scroll;
+}
+
+
+
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+/*                                  ESTILOS PAGINAS DE CONSULTA PQR                               */
+
+/*------------------- ENCABEZADO DE LA TABLA FIJO ARRIBA ---------------*/
+.table-consultar { 
+    height:17em;
+    overflow:scroll;
+}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+/*                                  IMPORTACION DE FUENTES TIPOGRAFICAS                               */
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/TitilliumWeb-Light.eot');
+    src: url('../font/TitilliumWeb-Light.eot?#iefix') format('embedded-opentype'),
+        url('../font/TitilliumWeb-Light.woff2') format('woff2'),
+        url('../font/TitilliumWeb-Light.woff') format('woff'),
+        url('../font/TitilliumWeb-Light.svg#TitilliumWeb-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
 }

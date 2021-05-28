@@ -1,0 +1,152 @@
+*{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+header{
+    z-index: 10;
+}
+
+.icono {
+    font-size: 1.3em;
+    width: 60px;
+    height: 36px;
+}
+
+.main-menu {
+    border-right:1px solid #e5e5e5;
+    height:100%;
+    width:60px;
+    overflow: hidden;
+    -webkit-transition:width .05s linear;
+    transition:width .05s linear;
+    -webkit-transform:translateZ(0) scale(1,1);
+    transform:translateZ(0) scale(1,1);
+    z-index:1000;
+    min-height: 100vh;
+}
+
+.contenedor-main-menu{
+    height: 100vh;
+}
+
+.main-menu>ul {
+    margin:7px 0;
+}
+
+.main-menu li {
+    width:250px;
+}
+
+.main-menu li>a {
+    border-collapse:collapse;
+    border-spacing:0;
+    color:#999;
+    -webkit-transform:translateZ(0) scale(1,1);
+    transform:translateZ(0) scale(1,1);
+    -webkit-transition:all .1s linear;
+    transition:all .1s linear;
+}
+
+.main-menu .nav-icon {
+    width:60px;
+    height:36px;
+}
+
+.main-menu .nav-text {
+    width:130px;
+}
+
+a:hover,a:focus {
+    text-decoration:none;
+}
+
+nav {
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+}
+
+.sub li {
+    padding: 5px;
+}
+
+.main-menu li:hover>a,
+.sub li:hover,
+nav.main-menu li.active>a,
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus,
+.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+.dashboard-page nav.dashboard-menu ul li.active a {
+    color:#fff;
+    background-color:#9e1a1a;
+    width: 100%;
+}
+
+.docs{
+    position:absolute;
+    bottom: 10px;
+    left: 0;
+}
+
+@media only screen and (max-device-width: 760px) {
+
+    .contenido{
+        font-size: 30px;
+    }
+    
+    .contenedor-main-menu{
+        width: 100vw;
+        position: absolute;
+    }
+
+    .main-menu{
+        overflow: visible;
+        position: absolute;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .main-menu li{
+        width: 100%;
+    }
+
+    .main-menu li>a{
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .nav-text,
+    .sub li a{
+        font-size: 30px;
+    }
+
+    .icono{
+        font-size: 2em;
+        width:40px;
+    }
+
+    .sub {
+        background-color: rgb(70, 74, 78) !important;
+    }
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/TitilliumWeb-Light.eot');
+    src: url('../font/TitilliumWeb-Light.eot?#iefix') format('embedded-opentype'),
+        url('../font/TitilliumWeb-Light.woff2') format('woff2'),
+        url('../font/TitilliumWeb-Light.woff') format('woff'),
+        url('../font/TitilliumWeb-Light.svg#TitilliumWeb-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+.lead{
+    font-family: 'Titillium Web', sans-serif !important;
+}

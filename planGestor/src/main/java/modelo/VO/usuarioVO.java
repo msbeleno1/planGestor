@@ -2,28 +2,30 @@ package modelo.VO;
 
 public class usuarioVO {
 	
-	private int id;
+	private int documento;
 	private String nombres;
 	private String apellidos;
-	private int edad;
 	private String correo;
+	private String telefono;
+	private String estado;
+	private String fechaModificacion;
+	private String fechaLogin;
 	private String usuario;
 	private String clave;
 	private String rol;
-	private String estado;
 	
 	//----------------------------GET Y SET ID----------------------
 	/**
-	 * @return the id
+	 * @return the documento
 	 */
-	public int getId() {
-		return this.id;
+	public int getDocumento() {
+		return this.documento;
 	}
 	/**
-	 * @param id the id to set
+	 * @param id the documento to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setDocumento(int documento) {
+		this.documento = documento;
 	}
 	
 	//--------------------------GET Y SET NOMBRES---------------------
@@ -37,7 +39,7 @@ public class usuarioVO {
 	 * @param nombres the nombres to set
 	 */
 	public void setNombres(String nombres) {
-		this.nombres = nombres;
+		this.nombres = nombres.toUpperCase();
 	}
 	
 	//---------------------------GET Y SET APELLIDOS--------------------
@@ -51,21 +53,21 @@ public class usuarioVO {
 	 * @param apellidos the apellidos to set
 	 */
 	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+		this.apellidos = apellidos.toUpperCase();
 	}
 	
 	//--------------------------GET Y SET EDAD----------------------------
 	/**
-	 * @return the edad
+	 * @return the telefono
 	 */
-	public int getEdad() {
-		return edad;
+	public String getTelefono() {
+		return telefono;
 	}
 	/**
-	 * @param edad the edad to set
+	 * @param edad the telefono to set
 	 */
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 	
 	//-------------------------GET Y SET CORREO-----------------------------
@@ -79,7 +81,7 @@ public class usuarioVO {
 	 * @param correo the correo to set
 	 */
 	public void setCorreo(String correo) {
-		this.correo = correo;
+		this.correo = correo.toUpperCase();
 	}
 	
 	//------------------------GET Y SET USUARIO----------------------------------
@@ -93,7 +95,7 @@ public class usuarioVO {
 	 * @param usuario the usuario to set
 	 */
 	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+		this.usuario = usuario.toUpperCase();
 	}
 	
 	//------------------------GET Y SET CLAVE------------------------------------
@@ -107,7 +109,7 @@ public class usuarioVO {
 	 * @param clave the clave to set
 	 */
 	public void setClave(String clave) {
-		this.clave = clave;
+		this.clave = clave.toUpperCase();
 	}
 
 
@@ -115,18 +117,31 @@ public class usuarioVO {
 		return rol;
 	}
 	public void setRol(String rol) {
-		this.rol = rol;
+		this.rol = rol.toUpperCase();
 	}
 	public String getEstado() {
 		return estado;
 	}
 	public void setEstado(String estado) {
-		this.estado = estado;
+		this.estado = estado.toUpperCase();
 	}
+	public String getFechaModificacion() {
+		return fechaModificacion;
+	}
+	public void setFechaModificacion(String fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
+	}
+	public String getFechaLogin() {
+		return fechaLogin;
+	}
+	public void setFechaLogin(String fechaLogin) {
+		this.fechaLogin = fechaLogin;
+	}
+	
 	@Override
 	public String toString() {
-		return "UsuarioVO [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", edad=" + edad + ", correo="
-				+ correo + ", usuario=" + usuario + ", clave=" + clave + "]";
+		return "usuarioVO [documento=" + documento + ", nombres=" + nombres + ", apellidos=" + apellidos + ", correo="
+				+ correo + ", telefono=" + telefono + ", estado=" + estado + ", fechaModificacion=" + fechaModificacion
+				+ ", fechaLogin=" + fechaLogin + ", usuario=" + usuario + ", clave=" + clave + ", rol=" + rol + "]";
 	}
-
 }
