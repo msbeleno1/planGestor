@@ -84,7 +84,7 @@
                         </a>
                     </li>
                     <li class="d-block m-0 p-0">
-                        <a class="d-table text-decoration-none btn-menu" href="#">
+                        <a class="d-table text-decoration-none btn-menu" href="clientes.jsp">
                             <em class="fa fa-users icono d-table-cell text-center align-middle"></em>
                             <span class="nav-text d-table-cell align-middle">
                                 Clientes
@@ -92,7 +92,7 @@
                         </a>
                     </li>
                     <li class="d-block m-0 p-0">
-                        <a class="d-table text-decoration-none btn-menu" href="#">
+                        <a class="d-table text-decoration-none btn-menu" href="vehiculos.jsp">
                             <em class="fa fa-car icono d-table-cell text-center align-middle"></em>
                             <span class="nav-text d-table-cell align-middle">
                                 Vehículos
@@ -108,8 +108,8 @@
                         </a>
                         <ul id="submenu-4" class="d-none pl-5 list-unstyled mb-3 sub">
                             <hr class="m-1 bg-light">
-                            <li class="text-light w-100"><a class="w-100 text-decoration-none" href="#"><em class="fas fa-plus mr-1"></em>  Crear factura</a></li>
-                            <li class="text-light w-100"><a class="w-100 text-decoration-none" href="#"><em class="fas fa-search mr-1"></em>  Consultar factura</a></li>
+                            <li class="text-light w-100"><a class="w-100 text-decoration-none" href="facturas_crearFacturas.jsp"><em class="fas fa-plus mr-1"></em>  Crear factura</a></li>
+                            <li class="text-light w-100"><a class="w-100 text-decoration-none" href="facturas_consultarFacturas.jsp"><em class="fas fa-search mr-1"></em>  Consultar factura</a></li>
                         </ul>
                     </li>
                     <li class="d-block m-0 p-0 docs">
@@ -141,10 +141,10 @@
                         <em class="fas fa-user-circle text-light icono"></em>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <h5 class="dropdown-header w-100 text-center" id="lblNombre">MI NOMBRE</h5>
+                        <h5 class="dropdown-header w-100 text-center" id="lblNombreSession">MI NOMBRE</h5>
                         <div class="d-flex w-100 justify-content-center">
                             <small class="pl-0 pr-1">ROL : </small>
-                            <small class="p-0" id="lblRol">Supervisor</small>
+                            <small class="p-0" id="lblRolSession">Supervisor</small>
                         </div>
                         <div class="dropdown-divider w-100"></div>
                         <a class="dropdown-item w-100 text-justify" href="#"><em class="fas fa-cog"></em> Ver datos</a>

@@ -1,5 +1,12 @@
 $(document).ready(function(){
-
+	
+	$("#lblNombreSession").html(localStorage.getItem("nombre"));
+    $("#lblRolSession").html(localStorage.getItem("rol"));
+    console.log(localStorage.getItem("nombre"));
+    console.log(localStorage.getItem("rol"));
+    localStorage.removeItem("nombre");
+    localStorage.removeItem("rol");
+	
     $(".btn-sub").click(function(e){
         let id = this.id;
         let indice;

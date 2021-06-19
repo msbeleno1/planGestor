@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="titleModalSuccess">Operación exitosa</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close btn-close-info" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -22,8 +22,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="titleModalError">Error con el usuario</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" id="titleModalError">Error en la operación</h5>
+                <button type="button" class="close btn-close-info" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -42,7 +42,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="titleModalSuccessMasiva">Operación exitosa</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close btn-close-info" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -50,9 +50,9 @@
                 <div>
                     <p class="lead mb-2">El procesó finalizó con los siguiente resultados:</p>
                 </div>
-                <table id="table-masiva" aria-describedby="En esta tabla se mostrarán los resultados enviados por el servidor cuando se utiliza una función masiva" class="table table-bordered table-hover">
+                <table id="table-masiva" aria-describedby="En esta tabla se mostrarán los resultados enviados por el servidor cuando se utiliza una función masiva" class="table table-bordered table-hover" style="width: 100%">
                         <thead class="thead-dark">
-                            <tr id="encabezados">
+                            <tr class="text-center text-nowrap align-middle" id="encabezados">
                             </tr>
                         </thead>
                         <tbody>
