@@ -14,17 +14,29 @@ $(document).ready(function() {
         }
     });
     
+    
+    
     // EVENTO QUE SE EJECUTA CUANDO UN MODAL ES ABIERTO
     $('.modal').on('show.bs.modal', function (event) {
         // OBTENEMOS LOS FORMULARIOS QUE YA ESTEN VALIDADOS Y LES REMOVEMOS LA CLASE WAS-VALIDATED
         $(".was-validated").each(function(){
             $(this).removeClass('was-validated');
         });
+        
+        // EN CASO DE QUE EL FORMULARIO TENGA UN MENSAJE DE ERROR DIFERENTE A LOS DE BOOSTRAP
+        // SI EL MENSAJE DE ERROR ESTÁ VISIBLE, LO HACEMOS INVISIBLE
+        if($("#msg-error").hasClass("d-none") === false){
+            $("#msg-error").addClass("d-none");
+        }
     })
 
     // FUNCION PARA RESETEAR LOS FORMULARIOS AL CARGAR LA PAGINA
     $('form').each(function(){
         $(this).trigger("reset");
+        if($(this).find("input[type='date']") != undefined){
+        	$("input[type='date']").attr('max', fechaHoy());
+        	$("input[type='date']").attr('min', '2000-01-01');
+        }
     });
       
 	// EL EVENTO DE SUBMIT DE TODOS DEL FORMULARIO
@@ -79,6 +91,11 @@ $(document).ready(function() {
         $(".custom-file-label").html("Seleccione un archivo");
         $("input[type='file']").value = '';
     });
+    
+    // EVENTO PARA ACTUALIZAR LOS TABLES DESPUES DE CERRAR LOS FORMULARIOS INFORMATIVOS
+    $('.btn-close-info').click(function(){
+    	window.location.reload();
+    });
 
     // FUNCION PARA DESHABILITAR EL COPY & PASTE DE LOS INPUT TIPO PASSWORD
     $("input[type='password']").bind('cut copy paste', function (e) {
@@ -94,6 +111,11 @@ $(document).ready(function() {
     $("input[type='file']").each(function(e){
         $(this).change(function(){
             if($(this).attr("accept") === "text/csv"){
+            	
+            	// QUITAMOS CUALQUIER ERROR VISIBLE CADA VEZ QUE SE INGRESE UN NUEVO ARCHIVO
+            	if($(".file-error").hasClass("d-none") === false){
+                    $(".file-error").addClass("d-none");
+                }
 
                 // DEFINIMOS UNA VARIBLE DE TAMAÑO MAXIMO PARA EL ARCHIVO (MEDIDA EN BYTES)
                 let maxSize = 3000000;
@@ -125,11 +147,6 @@ $(document).ready(function() {
                     
                     // VALIDAMOS QUE SI CUMPLA CON LA EXTENSIÓN SOLICITADA
                     if(ext != 'csv'){
-                        // MOSTRAMOS EL ERROR AL NO SER DE TIPO .CSV
-                        if($(".file-error").hasClass("d-none")){
-                            $(".file-error").removeClass("d-none");
-                        }
-                        $(".file-error").html("El archivo ingresado debe estar en formato CSV.");
                         this.value = '';
                         this.files.name = '';
                     }
@@ -146,6 +163,47 @@ $(document).ready(function() {
             }
         });
         
+    });
+    
+    
+    // FUNCION PARA EL INPUT DE DOCUMENTO DEL FORMULARIO DE EDICION DE VEHICULOS Y CREACION DE FACTURAS
+    $("#btnBuscarPropietario").click(function(e){
+    	e.preventDefault();
+    	deshabilitarBotones($(this).parents('form'));
+    	busqueda($(this).parents('form'));
+    });
+    
+    // FUNCION PARA EL INPUT DE DOCUMENTO DEL FORMULARIO DE EDICION DE VEHICULOS
+	$("#btnEditarPropietario").click(function(e){
+		e.preventDefault();
+		if($("#documentoGroup").hasClass("d-none")){
+			$("#documentoGroup").removeClass("d-none");
+		 	$('#btnEditarPropietario em').removeClass( "fa-edit" );
+            $('#btnEditarPropietario em').addClass( "fa-minus" );
+            $(this).parents('form').find('.btn-submit').attr('disabled',true);
+		}
+		else{
+			$("#documentoGroup").addClass("d-none");
+		 	$('#txtDocumentoPropietario').val($("#txtDocumentoTemp").val());
+		 	$('#btnEditarPropietario em').removeClass( "fa-minus" );
+            $('#btnEditarPropietario em').addClass( "fa-edit" );
+            $(this).parents('form').find('.btn-submit').attr('disabled',false);
+            if($("#error-buscar").hasClass("d-none") === false){
+            	$("#error-buscar").addClass("d-none");
+        	}
+		}
+	});
+	
+	
+	// FUNCION PARA EL INPUT DE CONCEPTO DE FACTURA
+	$("#txtConceptosFactura").keyup(function(){
+		let valor = $("#txtConceptosHidden").val();
+        $("#txtConceptosFactura").val(valor);
+    });
+    
+    $("#txtBaseFactura").keyup(function(){
+    	let valor = $("#txtBaseFacturaHidden").val();
+        $("#txtBaseFactura").val(valor);
     });
 
 });
@@ -169,4 +227,22 @@ function deshabilitarBotones(form){
         // EN CASO CONTRARIO SOLO DESHABILITAMOS LOS BOTONES DE CERRAR QUE ESTÁN DENTRO DEL FORMULARIO FORMULARIO
         $(form).find(".btn-close").prop( "disabled", true );
     }
+}
+
+
+// FUNCION PARA CALCULAR LA FECHA DE HOY EN FORMATO YYYY-MM-DD
+function fechaHoy(){
+    let hoy = Date();
+    const fecha = new Date(hoy);
+    let dia = fecha.getDate();
+    let mes = fecha.getMonth()+1;
+    
+    if(dia < 10){
+        dia = '0'+dia;
+    }
+    if(mes < 10){
+        mes = '0'+mes;
+    }
+    
+    return fecha.getFullYear()+"-"+mes+"-"+dia;
 }

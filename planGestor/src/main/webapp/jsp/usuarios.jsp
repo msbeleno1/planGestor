@@ -8,7 +8,7 @@
             <!-- MIGAJAS DE PAN -->
             <nav class="p-0 m-0" aria-label="breadcrumb">
                 <ol class="breadcrumb bg-white p-0 mt-0 justify-content-end">
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="#">/ Inicio</a></li>
+                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="home.jsp">/ Inicio</a></li>
                     <li class="breadcrumb-item active" aria-current="page"> Usuarios</li>
                 </ol>
             </nav>
@@ -21,7 +21,7 @@
             <div class="row">
             	<div class="col-lg-12">
             		<!--TABLA DE USUARIOS-->
-	                <table id="tablaUsuarios" class="table table-hover table-bordered display nowrap" aria-describedby="Tabla de usuarios">
+	                <table id="tablaUsuarios" class="table table-hover table-bordered display nowrap" aria-describedby="Tabla de usuarios" style="width: 100%">
 	
 	                    <!-- ENCABEZADOS DE LA TABLA -->
 	                    <thead class="thead-dark">
@@ -93,11 +93,8 @@
 			                                </div>
 			                                <div class="form-group col-md-6">
 			                                    <label for="txtCargoRegistro">Cargo</label>
-			                                    <select class="custom-select" name="cboCargoRegistro" id="cboCargoRegistro" required>
-			                                        <option value="" selected>Seleccione...</option>
-			                                        <option value="ASESOR">Asesor</option>
-			                                        <option value="SUPERVISOR">Supervisor</option>
-			                                        <option value="ADMINISTRADOR">Administrador</option>
+			                                    <select class="custom-select cbo" name="cboCargoRegistro" id="cboCargoRegistro" required>
+			                                       	<option value="" selected>Seleccione...</option>
 			                                    </select>
 			                                    <div class="invalid-feedback text-justify">Debe escoger una de las opciones disponibles.</div>
 			                                </div>                                    
@@ -105,12 +102,12 @@
 			                            <div class="row">
 			                                <div class="form-group col-md-6">
 			                                    <label for="txtNombresRegistro">Nombres</label>
-			                                    <input type="text" class="form-control" id="txtNombresRegistro" name="txtNombresRegistro" minlength="5" maxlength="15" pattern="^[A-Za-z ]{5,15}$" autocomplete="off" autocapitalize="characters" required>
+			                                    <input type="text" class="form-control" id="txtNombresRegistro" name="txtNombresRegistro" minlength="5" maxlength="15" pattern="^(?!^\s)(?=.*\s.+)(?![a-zA-Z]\s)(?!.*\s[a-zA-Z]\s)(?!.*\s[a-zA-Z]$).[a-zA-Z\s]{5,15}$" autocomplete="off" autocapitalize="characters" required>
 			                                    <div class="invalid-feedback text-justify">El campo debe tener mínimo 5 caracteres y solo puede contener letras.</div>
 			                                </div>
 			                                <div class="form-group col-md-6">
 			                                    <label for="txtApellidosRegistro">Apellidos</label>
-			                                    <input type="text" class="form-control" id="txtApellidosRegistro" name="txtApellidosRegistro" minlength="10" maxlength="25" pattern="^[A-Za-z ]{10,25}$" autocomplete="off" autocapitalize="characters" required>
+			                                    <input type="text" class="form-control" id="txtApellidosRegistro" name="txtApellidosRegistro" minlength="7" maxlength="25" pattern="^(?!^\s)(?=.*\s.+)(?![a-zA-Z]\s)(?!.*\s[a-zA-Z]\s)(?!.*\s[a-zA-Z]$).[a-zA-Z\s]{7,25}$" autocomplete="off" autocapitalize="characters" required>
 			                                    <div class="invalid-feedback text-justify">El campo debe tener mínimo 10 caracteres y solo puede contener letras.</div>
 			                                </div>
 			                            </div>
@@ -165,8 +162,8 @@
 			
 			                        <!-- FOOTER DEL MODAL -->
 			                        <div class="modal-footer">
-			                            <input type="button" class="btn btn-secondary btn-close" data-dismiss="modal" value="Cerrar">
-			                            <input type="submit" class="btn btn-red text-light btn-submit" value="Registrar">
+			                            <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Cerrar</button>
+			                            <button type="submit" class="btn btn-red text-light btn-submit">Registrar</button>
 			                        </div>
 			                        <!-- FIN DEL FOOTER DEL MODAL -->
 			
@@ -228,11 +225,8 @@
 			                        </div>
 			                        <div class="form-group col-md-6">
 			                            <label for="txtCargoEdicion">Cargo</label>
-			                            <select class="custom-select" name="txtCargoEdicion" id="txtCargoEdicion" required>
+			                            <select class="custom-select cbo" name="txtCargoEdicion" id="txtCargoEdicion" required>
 			                                <option value="" selected>Seleccione...</option>
-			                                <option value="ASESOR">Asesor</option>
-			                                <option value="SUPERVISOR">Supervisor</option>
-			                                <option value="ADMINISTRADOR">Administrador</option>
 			                            </select>
 			                            <div class="invalid-feedback text-justify">Debe escoger una de las opciones disponibles.</div>
 			                        </div>                                    
@@ -240,12 +234,12 @@
 			                    <div class="row">
 			                        <div class="form-group col-md-6">
 			                            <label for="txtNombresEdicion">Nombres</label>
-			                            <input type="text" class="form-control" id="txtNombresEdicion" name="txtNombresEdicion" minlength="5" maxlength="15" pattern="^[A-Za-z ]{5,15}$" autocomplete="off" autocapitalize="characters" required>
+			                            <input type="text" class="form-control" id="txtNombresEdicion" name="txtNombresEdicion" minlength="5" maxlength="15" pattern="^(?!^\s)(?=.*\s.+)(?![a-zA-Z]\s)(?!.*\s[a-zA-Z]\s)(?!.*\s[a-zA-Z]$).[a-zA-Z\s]{5,15}$" autocomplete="off" autocapitalize="characters" required>
 			                            <div class="invalid-feedback text-justify">El campo debe tener mínimo 5 caracteres y solo puede contener letras.</div>
 			                        </div>
 			                        <div class="form-group col-md-6">
 			                            <label for="txtApellidosEdicion">Apellidos</label>
-			                            <input type="text" class="form-control" id="txtApellidosEdicion" name="txtApellidosEdicion" minlength="10" maxlength="25" pattern="^[A-Za-z ]{10,25}$" autocomplete="off" autocapitalize="characters" required>
+			                            <input type="text" class="form-control" id="txtApellidosEdicion" name="txtApellidosEdicion" minlength="7" maxlength="25" pattern="^(?!^\s)(?=.*\s.+)(?![a-zA-Z]\s)(?!.*\s[a-zA-Z]\s)(?!.*\s[a-zA-Z]$).[a-zA-Z\s]{7,25}$" autocomplete="off" autocapitalize="characters" required>
 			                            <div class="invalid-feedback text-justify">El campo debe tener mínimo 10 caracteres y solo puede contener letras.</div>
 			                        </div>
 			                    </div>

@@ -3,12 +3,12 @@
 <%@ include file="../templates/menu.jsp" %>
 
 <!--CONTENEDOR PRINCIPAL-->
-        <section class="container-fluid mr-auto ml-auto mt-auto mb-auto pt-2">
+        <section class="container-fluid mr-auto ml-auto mt-auto mb-2 pt-2">
 
             <!-- MIGAJAS DE PAN -->
             <nav class="p-0 m-0" aria-label="breadcrumb">
                 <ol class="breadcrumb bg-white p-0 mt-0 justify-content-end">
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="#">/ Inicio</a></li>
+                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="home.jsp">/ Inicio</a></li>
                     <li class="breadcrumb-item active" aria-current="page"> Vehículos</li>
                 </ol>
             </nav>
@@ -21,15 +21,14 @@
             <div class="row">
             	<div class="col-lg-12">
             		<!--TABLA DE USUARIOS-->
-	                <table id="tablaVehiculos" class="table table-hover table-bordered display nowrap" aria-describedby="Tabla de vehiculos">
+	                <table id="tablaVehiculos" class="table table-hover table-bordered display nowrap" aria-describedby="Tabla de vehiculos" style="width: 100%">
 	
 	                    <!-- ENCABEZADOS DE LA TABLA -->
 	                    <thead class="thead-dark">
 	                      <tr>
 	                        <th scope="col" class="text-center text-nowrap align-middle">Placa</th>
 	                        <th scope="col" class="text-center text-nowrap align-middle">Fabricante</th>
-	                        <th scope="col" class="text-center text-nowrap align-middle">Linea</th>
-	                        <th scope="col" class="text-center text-nowrap align-middle">Modelo</th>
+	                        <th scope="col" class="text-center text-nowrap align-middle">Marca</th>
 	                        <th scope="col" class="text-center text-nowrap align-middle">Propietario</th>
 	                        <th scope="col" class="text-center text-nowrap align-middle">Acciones</th>
 	                      </tr>
@@ -86,13 +85,22 @@
 			                    <form action="" method="POST" id="formPropietario" name="formPropietario" class="needs-validation" novalidate>
 					                <div class="modal-body">
 					                    <div class="row">
-					                        <div class="form-group col-md-12">
+					                        <div class="form-group col-md-6">
 					                            <label for="txtDocumentoBuscar">Documento de identidad</label>
-					                            <input type="number" class="form-control" id="txtDocumentoBuscar" name="txtDocumentoBuscar" minlength="8" maxlength="20" pattern="^[0-9]{8,20}$" autocomplete="off" autocapitalize="characters" required>
+					                            <input type="text" class="form-control" id="txtDocumentoBuscar" name="txtDocumentoBuscar" minlength="8" maxlength="20" pattern="^[0-9]{8,20}$" autocomplete="off" autocapitalize="characters" required>
 					                            <div class="invalid-feedback text-justify">El campo debe tener mínimo 8 caracteres y solo puede contener números.</div>
-					                        </div>                                   
+					                        </div>
+					                        <div class="form-group col-md-6">
+			                                    <label for="txtCargoRegistro">Tipo de documento</label>
+			                                    <select class="custom-select cbo" name="cboTipoBuscar" id="cboTipoBuscar" required>
+			                                       	<option value="" selected>Seleccione...</option>
+			                                    </select>
+			                                    <div class="invalid-feedback text-justify">Debe escoger una de las opciones disponibles.</div>
+			                                </div>                                    
 					                    </div>
-					                    <div class="row" id="msg-error">No existe un cliente en el sistema con ese número de identificación</div>
+					                    <div class="row">
+					                    	<p class="w-100 text-danger text-center d-none" id="msg-error">No existe un cliente en el sistema con ese número y tipo de identificación</p>
+					                    </div>
 					                </div>
 					                <!-- FINAL FORMULARIO Y CUERPO DEL MODAL -->
 					                
@@ -144,7 +152,7 @@
 			
 			            <!-- ENCABEZADO DEL MODAL -->
 			            <div class="modal-header">
-			                <h4 class="modal-title">Creación de vehículo</h4>
+			                <h4 class="modal-title">Información de vehículo</h4>
 			                <button type="button" class="close btn-close" data-dismiss="modal">&times;</button>
 			            </div>
 			            <!-- FIN DEL ENCABEZADO DEL MODAL -->
@@ -155,19 +163,19 @@
 	                            <div class="row">
 	                                <div class="form-group col-md-6">
 	                                    <label for="txtPlaca">Placa de vehiculo</label>
-	                                    <input type="text" class="form-control" id="txtPlaca" name="txtPlaca" minlength="4" maxlength="15" pattern="^[0-9A-Za-z]{4,15}$" autocomplete="off" autocapitalize="characters" required>
+	                                    <input type="text" class="form-control" id="txtPlaca" name="txtPlaca" minlength="6" maxlength="15" pattern="^[0-9A-Za-z]{6,15}$" autocomplete="off" autocapitalize="characters" required>
 	                                    <div class="invalid-feedback text-justify">El campo debe tener mínimo 4 caracteres. Solo admite números y letras.</div>
 	                                </div>
 	                                <div class="form-group col-md-6">
 	                                    <label for="txtChasis">Número de Chasis</label>
-	                                    <input type="text" class="form-control" id="txtChasis" name="txtChasis" minlength="15" maxlength="30" pattern="^[0-9A-Za-z]{15,30}$" autocomplete="off" autocapitalize="characters" required>
+	                                    <input type="text" class="form-control" id="txtChasis" name="txtChasis" minlength="6" maxlength="30" pattern="^[0-9A-Za-z]{6,30}$" autocomplete="off" autocapitalize="characters" required>
 	                                    <div class="invalid-feedback text-justify">El campo debe tener mínimo 15 caracteres. Solo admite números y letras.</div>
 	                                </div>                                   
 	                            </div>
 	                            <div class="row">
 	                                <div class="form-group col-md-6">
 	                                    <label for="txtMotor">Número de Motor</label>
-	                                    <input type="text" class="form-control" id="txtMotor" name="txtMotor" minlength="15" maxlength="30" pattern="^[0-9A-Za-z]{15,30}$" autocomplete="off" autocapitalize="characters" required>
+	                                    <input type="text" class="form-control" id="txtMotor" name="txtMotor" minlength="6" maxlength="30" pattern="^[0-9A-Za-z]{6,30}$" autocomplete="off" autocapitalize="characters" required>
 	                                    <div class="invalid-feedback text-justify">El campo debe tener mínimo 15 caracteres. Solo admite números y letras.</div>
 	                                </div>  
 	                                <div class="form-group col-md-6">
@@ -180,12 +188,12 @@
 	                            <div class="row">
 	                                <div class="form-group col-md-6">
 	                                    <label for="txtLinea">Linea</label>
-	                                    <input type="text" class="form-control" id="txtLinea" name="txtLinea" minlength="3" maxlength="30" pattern="^[A-Za-z]{3,30}$" autocomplete="off" autocapitalize="characters" required>
+	                                    <input type="text" class="form-control" id="txtLinea" name="txtLinea" minlength="3" maxlength="30" pattern="^[A-Za-z0-9 ]{3,30}$" autocomplete="off" autocapitalize="characters" required>
 	                                    <div class="invalid-feedback text-justify">El campo debe tener mínimo 3 caracteres y solo admite letras.</div>
 	                                </div>  
 	                                <div class="form-group col-md-6">
 	                                    <label for="txtModelo">Modelo</label>
-	                                    <input type="number" class="form-control" id="txtModelo" name="txtModelo" minlength="4" maxlength="4" pattern="^(199|200|201|202)\d{1}{4,4}$" autocomplete="off" autocapitalize="characters" required>
+	                                    <input type="text" class="form-control" id="txtModelo" name="txtModelo" minlength="4" maxlength="4" pattern="^(199|200|201|202)\d{1}$" autocomplete="off" autocapitalize="characters" required>
 	                                    <div class="invalid-feedback text-justify">El campo debe tener mínimo 4 caracteres y solo admite números.</div>
 	                                </div> 
 	                            </div>
@@ -193,11 +201,39 @@
 	                            <div class="row">
 	                                <div class="form-group col-md-12">
 	                                    <label for="txtNombrePropietario">Nombre del Propietario</label>
-	                                    <input type="text" class="form-control" id="txtNombrePropietario" name="txtNombrePropietario" disabled>
-	                                    <div class="invalid-feedback text-justify">El campo debe tener mínimo 4 caracteres y solo admite números.</div>
-	                                </div> 
-	                                <input type="hidden" class="form-control" id="txtDocumentoPropietario" required readonly>
+	                                    <div class="input-group">
+	                                    	<input type="text" class="form-control" id="txtNombrePropietario" name="txtNombrePropietario" disabled>
+		                                    <div class="input-group-prepend bg-white border-left-0">
+	                                            <div class="input-group-text bg-white border-left-0">
+	                                                <a id="btnEditarPropietario" href="#" class="text-dark bg-white border-left-0"><em class="fas fa-edit"></em></a>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
 	                            </div>
+	                            <div id="documentoGroup" class="row d-none">
+	                               	<div class="form-group col-md-6">
+	                                    <label for="txtNombrePropietario">Documento del Propietario</label>
+	                                    <div class="input-group">
+	                                    	<input type="hidden" class="form-control" id="txtDocumentoTemp" name="txtDocumentoTemp" readonly>
+	                                    	<input type="hidden" class="form-control" id="opcion" name="opcion" readonly>
+	                                    	<input type="text" class="form-control" id="txtDocumentoPropietario" name="txtDocumentoPropietario" minlength="8" maxlength="20" pattern="^[0-9]{8,20}$" autocomplete="off" autocapitalize="characters" required>
+		                                    <div class="input-group-prepend bg-white border-left-0">
+	                                            <div class="input-group-text bg-white border-left-0">
+	                                                <a id="btnBuscarPropietario" href="#" class="text-dark bg-white border-left-0"><em class="fas fa-search"></em></a>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group col-md-6">
+	                                    <label for="cboTipoModalVehiculo">Tipo de documento</label>
+	                                    <select class="custom-select cbo" name="cboTipoModalVehiculo" id="cboTipoModalVehiculo" required>
+	                                    </select>
+									</div>
+                              </div>
+                              <div class="row">
+                              	<p id="error-buscar" class="w-100 text-center text-danger d-none">No existe un cliente en el sistema con ese número y tipo de identificación</p>
+                              </div>
 	                        </div>
 	
 	                        <!-- FOOTER DEL MODAL -->
