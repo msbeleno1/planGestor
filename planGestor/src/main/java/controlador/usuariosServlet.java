@@ -36,12 +36,14 @@ public class usuariosServlet extends HttpServlet {
        
 	private usuarioDAO userDAO;
     private algoritmoSHA256 encriptador;
+    private cargoDAO cargoDao;
 
     @Override
 	public void init() throws ServletException {
     	super.init();
 		userDAO = new usuarioDAO();
 		encriptador = new algoritmoSHA256();
+		cargoDao = new cargoDAO();
 	}
 
 	/**
@@ -65,7 +67,7 @@ public class usuariosServlet extends HttpServlet {
 	    			request.getParameter("txtTelefonoRegistro"),
 	    			request.getParameter("txtCorreoRegistro")};
 	    	
-	    	if(funcionesParaFichero.validarUsuario(datosUsuario)) {
+	    	if(funcionesParaFichero.validarUsuario(datosUsuario) && crearNombreUsuario(request.getParameter("txtNombresRegistro"), request.getParameter("txtApellidosRegistro")) != null) {
 	    		usuarioVO usuario = new usuarioVO();        		
         		
         		usuario.setDocumento(Integer.parseInt(datosUsuario[0]));
@@ -80,24 +82,18 @@ public class usuariosServlet extends HttpServlet {
         		usuario.setFechaModificacion(LocalDate.now().toString());
         		
         		String nickname = crearNombreUsuario(usuario.getNombres(), usuario.getApellidos());
-        		if(nickname != null) {
-        			usuario.setUsuario(nickname);
-        			int id = obtenerIdCargo(usuario.getRol());
-        			String resultado = userDAO.crearUsuario(usuario, id);
-        			
-        			if(resultado.equalsIgnoreCase("YA EXISTE")) {
-        				jsonResponse.addProperty("datos",usuario.getNombres()+" "+usuario.getApellidos());
-            			jsonResponse.addProperty("informacion", "error");
-        			}
-        			else {
-            			jsonResponse.addProperty("informacion", "exito");
-                		jsonResponse.addProperty("datos",usuario.getUsuario());
-        			}
-        		}
-        		else {
-        			jsonResponse.addProperty("datos",usuario.getNombres()+" "+usuario.getApellidos());
+        		usuario.setUsuario(nickname);
+    			int id = obtenerIdCargo(usuario.getRol());
+    			String resultado = userDAO.crearUsuario(usuario, id);
+    			
+    			if(resultado.equalsIgnoreCase("YA EXISTE")) {
+    				jsonResponse.addProperty("datos",usuario.getNombres()+" "+usuario.getApellidos());
         			jsonResponse.addProperty("informacion", "error");
-        		}
+    			}
+    			else {
+        			jsonResponse.addProperty("informacion", "exito");
+            		jsonResponse.addProperty("datos",usuario.getUsuario());
+    			}
 	    	}
 	    	else {
 	    		jsonResponse.addProperty("informacion", "error");
@@ -115,7 +111,6 @@ public class usuariosServlet extends HttpServlet {
 	        // CONVERTIMOS EL ARCHIVO DE DATOS A UN LISTA DE DATOS SEGÚN LOS DATOS INGRESADOS
 	        List<String[]> filasCsv = funcionesParaFichero.leerCsv(fileContent);
 	        if(funcionesParaFichero.verificarFichero(filasCsv, "usuario")) {
-	        	List<usuarioVO> listaUsuarios = new ArrayList<>();
 	        	JsonArray miJson = new JsonArray();
 	        	for(String[] columna : filasCsv) {
 	        		usuarioVO usuario = new usuarioVO();
@@ -148,7 +143,6 @@ public class usuariosServlet extends HttpServlet {
 	        	}
 	        	jsonResponse.addProperty("informacion", "exito");
 	    		jsonResponse.addProperty("datos",miJson.toString());
-	    		System.out.println(miJson.toString());
 	        }
 	        else {
 	        	jsonResponse.addProperty("informacion", "error");
@@ -215,6 +209,7 @@ public class usuariosServlet extends HttpServlet {
 	    if(!opcion.equals("reset") && !opcion.equals("cambiar")) {
 	    	// DATOS DE LOS USUARIOS ACTUALIZADA
 		    jsonResponse.addProperty("dataTable",refrescarJson().toString());
+		    jsonResponse.addProperty("select",cargarCargos().toString());
 	    }
 	    out.print(jsonResponse);
 	    out.flush();
@@ -236,12 +231,22 @@ public class usuariosServlet extends HttpServlet {
 			obj.addProperty("Cargo", user.getRol());
 			obj.addProperty("Usuario", user.getUsuario());
 			obj.addProperty("Estado", user.getEstado());
-			obj.addProperty("login", user.getFechaLogin());
+			obj.addProperty("Login", user.getFechaLogin());
 			miJson.add(obj);
 		}
 		return miJson;
 	}
 	
+	private JsonArray cargarCargos() {
+		List<cargoVO> listaCargos = cargoDao.verTodosCargos();
+		JsonArray miJsonArr = new JsonArray(listaCargos.size());
+		for(cargoVO cargo : listaCargos) {
+			JsonObject obj = new JsonObject();
+			obj.addProperty("Nombre", cargo.getCargo());
+			miJsonArr.add(obj);
+		}
+		return miJsonArr;
+	}
 	
     private String crearNombreUsuario(String nombres, String apellidos) {
 		
@@ -317,9 +322,7 @@ public class usuariosServlet extends HttpServlet {
 	
 	private int obtenerIdCargo(String miCargo) {
 		int toReturn = -1;
-		cargoDAO cargoDao = new cargoDAO();
 		List<cargoVO> listaCargos = cargoDao.verTodosCargos();
-		
 		for(cargoVO cargo : listaCargos) {
 			if(cargo.getCargo().equalsIgnoreCase(miCargo))
 				toReturn = cargo.getId();

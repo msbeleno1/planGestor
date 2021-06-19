@@ -8,7 +8,7 @@ import util.DBConnection;
 
 public class cargoDAO {
 	
-	// METODO PARA BUSCAR TODOS LOS USUARIOS DE LA TABLA USUARIOS
+	// METODO PARA BUSCAR TODOS LOS CARGOS DE LA TABLA CARGOS
 	public List<cargoVO> verTodosCargos(){
 		
 		Connection connection = null;
