@@ -19,4 +19,11 @@ public class cargoVO {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
+
+	@Override
+	public String toString() {
+		return "id=" + id + ", cargo=" + cargo;
+	}
+	
+	
 }
