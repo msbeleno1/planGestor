@@ -24,7 +24,6 @@ $(document).ready(function(){
         $("#txtClaveRegistro2").keyup();
     });
 
-
     // FUNCION PARA CONVERTIR UNA CADENA EN CARACTERES UNICODE
     function ascii_to_hexa(str){
         var arr1 = [];

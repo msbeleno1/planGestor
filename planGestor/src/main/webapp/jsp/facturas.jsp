@@ -16,7 +16,7 @@
     <!-- CARTAS DE OPCIONES -->
     <div class="row justify-content-between">
         <div class="col-sm-6">
-            <a class="card text-decoration-none mr-auto ml-auto" style="width: 18rem;" href="#">
+            <a class="card text-decoration-none mr-auto ml-auto" style="width: 18rem;" href="facturas_crearFacturas.jsp">
                 <em class="fas fa-plus card-img-top text-center mt-1" style="font-size: 10rem;"></em>
                 <div class="card-body">
                     <h5 class="card-title text-center">Crear factura</h5>
@@ -25,7 +25,7 @@
             </a>
         </div>
         <div class="col-sm-6">
-            <a class="card text-decoration-none mr-auto ml-auto" style="width: 18rem;" href="#">
+            <a class="card text-decoration-none mr-auto ml-auto" style="width: 18rem;" href="facturas_consultarFacturas.jsp">
                 <em class="fas fa-search card-img-top text-center mt-1" style="font-size: 10rem;"></em>
                 <div class="card-body">
                     <h5 class="card-title text-center">Consultar factura</h5>

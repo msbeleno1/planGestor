@@ -1,5 +1,5 @@
 <%@ include file="../templates/header.jsp" %>
-<%@ include file="../templates/menu.jsp" %>%>
+<%@ include file="../templates/menu.jsp" %>
 
 <!--CONTENEDOR PRINCIPAL-->
 <section class="container-fluid mr-auto ml-auto mt-auto mb-auto pt-2">

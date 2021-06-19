@@ -54,6 +54,7 @@ public class validaLogin extends HttpServlet {
 	    	
 	    	if(usuarioVo.getRol() != null) {
 	    		json.addProperty("Rol", usuarioVo.getRol());
+	    		json.addProperty("Nombre", usuarioVo.getNombres()+" "+usuarioVo.getApellidos());
 	    	}
 	    	else {
 	    		json.addProperty("Rol", "Ninguno");
