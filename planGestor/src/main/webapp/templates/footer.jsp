@@ -4,7 +4,7 @@
 	    <!--Fin main-->
 	
 	    <!--Inicio footer-->
-	    <footer class="container-fluid mt-0 pt-0 fixed-bottom">
+	    <footer class="container-fluid mt-0 pt-0">
 	        <div class="row bg-dark justify-content-center text-light">
 	            <h6 class="m-0">Copyright &copy; 2021 - All Rights Reserved</h6>
 	        </div>
@@ -22,4 +22,5 @@
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
     	
     	<!-- SCRIPT PARA CONTROLAR EVENTOS DEL MENU -->
+    	<script type="text/javascript" src="../js/accesPage.js"></script>
 	    <script type="text/javascript" src="../js/menu.js"></script>

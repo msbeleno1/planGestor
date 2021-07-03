@@ -32,7 +32,7 @@
                             <li class="text-light w-100"><a class="w-100 text-decoration-none" href="radicados_gestionarRadicados.jsp"><em class="fas fa-edit mr-1"></em>  Gestionar radicado</a></li>
                         </ul>
                     </li>
-                    <li class="d-block m-0 p-0">
+                    <li class="d-block m-0 p-0 nav-adm">
                         <a class="d-table text-decoration-none btn-menu" href="#">
                         <em class="fa fa-folder-open icono d-table-cell text-center align-middle"></em>
                             <span class="nav-text d-table-cell align-middle">
@@ -51,7 +51,7 @@
                         <ul id="submenu-2" class="d-none pl-5 list-unstyled mb-3 sub">
                             <hr class="m-1 bg-light">
                             <li class="text-light w-100"><a class="w-100 text-decoration-none" href="#"><em class="fas fa-search mr-1"></em>  Consultar Carta</a></li>
-                            <li class="text-light w-100"><a class="w-100 text-decoration-none" href="#"><em class="fas fa-tasks mr-1"></em>  Tipo de carta</a></li>
+                            <li class="text-light w-100 nav-adm"><a class="w-100 text-decoration-none" href="#"><em class="fas fa-tasks mr-1"></em>  Tipo de carta</a></li>
                         </ul>
                     </li>
                     <li class="d-block m-0 p-0">
@@ -64,10 +64,10 @@
                         <ul id="submenu-3" class="d-none pl-5 list-unstyled mb-3 sub">
                             <hr class="m-1 bg-light">
                             <li class="text-light w-100"><a class="w-100 text-decoration-none" href="#"><em class="fas fa-search mr-1"></em>  Consultar Formulario</a></li>
-                            <li class="text-light w-100"><a class="w-100 text-decoration-none" href="#"><em class="fas fa-tasks mr-1"></em>  Tipo de formulario</a></li>
+                            <li class="text-light w-100 nav-adm"><a class="w-100 text-decoration-none" href="#"><em class="fas fa-tasks mr-1"></em>  Tipo de formulario</a></li>
                         </ul>
                     </li>
-                    <li class="d-block m-0 p-0">
+                    <li class="d-block m-0 p-0 nav-sup">
                         <a class="d-table text-decoration-none btn-menu" href="#">
                             <em class="fa fa-bar-chart-o icono d-table-cell text-center align-middle"></em>
                             <span class="nav-text d-table-cell align-middle">
@@ -75,15 +75,15 @@
                             </span>
                         </a>
                     </li>
-                    <li class="d-block m-0 p-0">
-                    <a class="d-table text-decoration-none btn-menu" href="usuarios.jsp">
-                        <em class="fas fa-users-cog icono d-table-cell text-center align-middle"></em>
+                    <li class="d-block m-0 p-0 nav-adm">
+                    	<a class="d-table text-decoration-none btn-menu" href="usuarios.jsp">
+                        	<em class="fas fa-users-cog icono d-table-cell text-center align-middle"></em>
                             <span class="nav-text d-table-cell align-middle">
                                 Usuarios
                             </span>
                         </a>
                     </li>
-                    <li class="d-block m-0 p-0">
+                    <li class="d-block m-0 p-0 nav-adm">
                         <a class="d-table text-decoration-none btn-menu" href="clientes.jsp">
                             <em class="fa fa-users icono d-table-cell text-center align-middle"></em>
                             <span class="nav-text d-table-cell align-middle">
@@ -91,7 +91,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="d-block m-0 p-0">
+                    <li class="d-block m-0 p-0 nav-adm">
                         <a class="d-table text-decoration-none btn-menu" href="vehiculos.jsp">
                             <em class="fa fa-car icono d-table-cell text-center align-middle"></em>
                             <span class="nav-text d-table-cell align-middle">
@@ -99,7 +99,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="d-block m-0 p-0">
+                    <li class="d-block m-0 p-0 nav-sup">
                         <a class="d-table text-decoration-none btn-sub" id="btn-facturas" href="#">
                             <em class="fa fa-file-invoice-dollar icono d-table-cell text-center align-middle"></em>
                             <span class="nav-text d-table-cell align-middle">
@@ -148,7 +148,7 @@
                         </div>
                         <div class="dropdown-divider w-100"></div>
                         <a class="dropdown-item w-100 text-justify" href="#"><em class="fas fa-cog"></em> Ver datos</a>
-                        <a class="dropdown-item w-100 text-justify" href="../index.html"><em class="fas fa-sign-out-alt"></em> Cerrar sesión</a>
+                        <a class="dropdown-item w-100 text-justify" href="#" id="btnLogout"><em class="fas fa-sign-out-alt"></em> Cerrar sesión</a>
                     </div>
                 </div>
             </nav>
