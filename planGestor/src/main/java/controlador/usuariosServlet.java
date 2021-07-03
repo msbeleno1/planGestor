@@ -16,13 +16,13 @@ import com.google.gson.JsonObject;
 
 import java.io.PrintWriter;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import modelo.DAO.cargoDAO;
 import modelo.DAO.usuarioDAO;
 import modelo.VO.cargoVO;
 import modelo.VO.usuarioVO;
+import util.ControlLogeo;
 import util.algoritmoSHA256;
 import util.funcionesParaFichero;
 
