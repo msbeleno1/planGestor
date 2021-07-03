@@ -43,10 +43,13 @@ $(document).ready(function() {
     $('form').submit(function(event) { // AGREGAMOS UN EVENTO AL PRESIONAR EL BOTON TIPO SUBMIT DEL FORMULARIO PADRE
         event.preventDefault(); // SE CANCELARA EL EVENTO (SI SE PUEDE), SIN DETENER EL FUNCIONAMIENTO DEL EVENTO YA EN EJECUCION
         event.stopPropagation(); // EVITA LA PROPAGACION DEL EVENTO ACTUAL A SU CONTENEDOR PADRE
+        
+        // EN LOS FORMULARIOS CON INOUT DE TIPO FILE, LE QUITAMOS EL MENSAJE DE ERROR AL ESE INPUT
+        if($(".file-error").hasClass("d-none") === false){
+            $(".file-error").addClass("d-none");
+        }
+        
         if (this.checkValidity() === true) { // VALIDAMOS EL FORMULARIO DONDE PRESIONAMOS EL BOTON TIPO SUBMIT
-
-            // CONTROLAMOS LA ACCESIBILIDAD DE LOS BOTONES MIENTRAS TODO CARGA
-            deshabilitarBotones(this);
 
             // MOSTRAMOS EL MENSAJE DE CARGANDO GRACIAS A LA CLASE SPINNER DE BOOSTRAP 4.6
             $(this).find(".btn-submit").html('<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Cargando...');
@@ -110,7 +113,67 @@ $(document).ready(function() {
     // FUNCION PARA VALIDAR LOS INPUT FILE
     $("input[type='file']").each(function(e){
         $(this).change(function(){
-            if($(this).attr("accept") === "text/csv"){
+        	// OBTENEMOS EL NOMBRE DEL ARCHIVO Y EL PESO
+            let fileName = this.files[0].name;
+            let fileSize = this.files[0].size;
+
+            console.log(fileName);
+            console.log(fileSize);
+            
+        	if($(this).hasClass("file-radicado")){
+        		// DEFINIMOS UNA VARIBLE DE TAMAÑO MAXIMO PARA EL ARCHIVO (MEDIDA EN BYTES)
+                let maxSize = 25000000;
+                let txtSize = maxSize / 1000000; // 25MB
+                
+                if(fileSize > maxSize){
+                    // MOSTRAMOS EL MENSAJE DE ERROR AL SUSPERAR EL VALOR DE LA VARIABLE DE TAMAÑO MAXIMO
+                    if($(".file-error").hasClass("d-none")){
+                        $(".file-error").removeClass("d-none");
+                    }
+                    $(".file-error").html("El tamaño del archivo no debe ser superior a "+txtSize+"MB.");
+                    this.value = '';
+                    this.files.name = '';
+                }
+                else{
+                    // OBTENEMOS LA EXTENSIÓN DEL ARCHIVO
+                    let ext = fileName.split('.').pop();
+                    
+                    // CONVERTIMOS EN MINUSCULA LA EXTENSIÓN POR SI ACASO ESTÁ EN MAYUSCULA
+                    ext = ext.toLowerCase();
+                    console.log(ext);
+                    
+                    // VALIDAMOS QUE SI CUMPLA CON LA EXTENSIÓN SOLICITADA
+                    let extValida = false;
+
+					let extensiones = ["OGG", "PDF", "ZIP", "RAR", "XLS", "XLSX", "DOCX", "M4A", "MP3", "OPUS", "WAV", 
+					    "JPE", "JPG", "JPEG", "PNG", "BMP", "SVG", "CSV", "AVI", "M4V", "MP4", "DOC", "MSG"];
+					    
+					for(let extension of extensiones){
+					    if(ext === extension.toLowerCase()){
+					        extValida = true;
+					    }
+					}
+                    
+                    if(!extValida){
+                    	if($(".file-error").hasClass("d-none")){
+	                        $(".file-error").removeClass("d-none");
+	                    }
+	                    $(".file-error").html("La extensión del archivo no es valida.");
+                        this.value = '';
+                        this.files.name = '';
+                    }
+                    else{
+                        // QUITAMOS ALGUN MENSAJE DE ERROR EN CASO DE HABERLO
+                        if($(".file-error").hasClass("d-none") === false){
+                            $(".file-error").addClass("d-none");
+                        }
+
+                        // COLOCAMOS EL NOMBRE DEL ARCHIVO AL INPUT
+                        $(".custom-file-label").html(fileName);
+                    }
+                }
+        	}
+            else if($(this).attr("accept") === "text/csv"){
             	
             	// QUITAMOS CUALQUIER ERROR VISIBLE CADA VEZ QUE SE INGRESE UN NUEVO ARCHIVO
             	if($(".file-error").hasClass("d-none") === false){
@@ -121,12 +184,7 @@ $(document).ready(function() {
                 let maxSize = 3000000;
                 let txtSize = maxSize / 1000000; // 3MB
 
-                // OBTENEMOS EL NOMBRE DEL ARCHIVO Y EL PESO
-                let fileName = this.files[0].name;
-	            let fileSize = this.files[0].size;
-
-                console.log(fileName);
-                console.log(fileSize);
+                
 
                 if(fileSize > maxSize){
                     // MOSTRAMOS EL MENSAJE DE ERROR AL SUSPERAR EL VALOR DE LA VARIABLE DE TAMAÑO MAXIMO
@@ -147,6 +205,10 @@ $(document).ready(function() {
                     
                     // VALIDAMOS QUE SI CUMPLA CON LA EXTENSIÓN SOLICITADA
                     if(ext != 'csv'){
+                    	if($(".file-error").hasClass("d-none")){
+	                        $(".file-error").removeClass("d-none");
+	                    }
+	                    $(".file-error").html("La extensión del archivo no es valida.");
                         this.value = '';
                         this.files.name = '';
                     }
@@ -211,21 +273,15 @@ $(document).ready(function() {
 // FUNCION PARA DESHABILITAR LOS BOTONES MIENTRAS CARGA LA INFORMACIÓN
 function deshabilitarBotones(form){
 
-    // DESAHBILITAMOS EL BOTON SUBMIT DEL FORMULARIO
-    $(form).find(".btn-submit").prop( "disabled", true );
-
     // VALIDAMOS SI EL FORMULARIO ESTA DENTRO DE UN MODAL
-    if($(form).parents('.modal-content') != undefined){
-        // EN CASO DE QUE EL FORMULARIO SEA DE UN MODAL, DESHABILITAMOS TODOS LOS BOTONES DE CERRAR
-        $(form).parents('.modal-content').find(".btn-close").prop( "disabled", true );
-
-        if($(form).parents('.modal-content').find(".nav-tabs") != undefined){
-            $(form).parents('.modal-content').find(".nav-item").prop( "disabled", true );
-        }
+    if($(form).parents('.modal').attr("id") != undefined){
+    
+        // EN CASO DE QUE EL FORMULARIO SEA DE UN MODAL, DESHABILITAMOS TODOS LOS CONTROLES DEL MODAL
+        $(form).parents('.modal').find("*").prop( "disabled", true );
     }
     else{
         // EN CASO CONTRARIO SOLO DESHABILITAMOS LOS BOTONES DE CERRAR QUE ESTÁN DENTRO DEL FORMULARIO FORMULARIO
-        $(form).find(".btn-close").prop( "disabled", true );
+       $(form).find("*").prop( "disabled", true );
     }
 }
 

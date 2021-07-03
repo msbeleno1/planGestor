@@ -4,15 +4,17 @@ function ajaxForms(form){
 	
     if($(form).attr("id") === "formLogin"){
         let dataForm = $( form ).serialize();
-        
+        habilitarBotones(form, true);
         $.ajax({
           type: "POST",
           url: "validaLogin",
           data: dataForm,
           success: function( data ) {
-              if(data.Rol === "Ninguno"){
-              		habilitarBotones(form);
-	              	$(form).find("#msg-error").removeClass("d-none"); // MOSTRAMOS EL MENSAJE DE ERROR
+          		habilitarBotones(form, false);
+              if(data.informacion === "error"){
+              		
+	              	$(form).find("#msg-error").removeClass("d-none");
+	              	$(form).find("#msg-error").html(data.error); // MOSTRAMOS EL MENSAJE DE ERROR
 	            	$(form).find(".btn-submit").html('ENVIAR'); // CAMBIAMOS EL CONTENIDO DEL BOTON SUBMIT
               }
               else{	
@@ -33,7 +35,7 @@ function ajaxForms(form){
         var files = $(form).find("input[type='file'")[0].files;
         fd.append('file',files[0]);
         fd.append('opcion','masiva');
-
+		habilitarBotones(form, true);
 
         $.ajax({
         	type: 'POST',
@@ -42,7 +44,7 @@ function ajaxForms(form){
             contentType: false,
             processData: false,
             success: function(response){
-            	habilitarBotones(form);
+            	habilitarBotones(form, false);;
             	$(form).find(".btn-submit").html('Registrar'); // CAMBIAMOS EL CONTENIDO DEL BOTON SUBMIT
             	
             	if(response.informacion == "error"){
@@ -90,14 +92,14 @@ function ajaxForms(form){
     else if($(form).attr("id") === "formRegistroIndividual"){
 
         let dataForm = $(form).serialize()+"&opcion=crear";
-
+		habilitarBotones(form, false);
         $.ajax({
             type:'POST',
             url: "../usuariosServlet",
             data: dataForm,
             datatype: "text",
             success: function( response ) {
-                habilitarBotones(form);
+                habilitarBotones(form, false);
                 $(form).trigger("reset");
             	$(form).find(".btn-submit").html('Registrar');
                 $(form).parents('.modal').modal('hide');
@@ -115,14 +117,14 @@ function ajaxForms(form){
     }
     else if($(form).attr("id") === "formEdicion"){
     	let dataForm = $(form).serialize()+"&opcion=editar";
-    	
+    	habilitarBotones(form, true);
     	$.ajax({
 	    	type:'POST',
             url: "../usuariosServlet",
             data: dataForm,
             datatype: "text",
             success: function( response ) {
-                habilitarBotones(form);
+                habilitarBotones(form, false);
                 $(form).trigger("reset");
             	$(form).find(".btn-submit").html('Editar');
                 $(form).parents('.modal').modal('hide');
@@ -140,6 +142,7 @@ function ajaxForms(form){
     }
     else if($(form).attr("id") === "formReset"){
     	let dataForm = $(form).serialize()+"&opcion=reset";
+    	habilitarBotones(form, true);
     	
     	$.ajax({
 	    	type:'POST',
@@ -147,7 +150,7 @@ function ajaxForms(form){
             data: dataForm,
             datatype: "text",
             success: function( response ) {
-                habilitarBotones(form);
+                habilitarBotones(form, false);
                 $(form).trigger("reset");
             	$(form).find(".btn-submit").html('SÍ');
                 $(form).parents('.modal').modal('hide');
@@ -173,6 +176,7 @@ function ajaxForms(form){
 			$("#msg-error").addClass("d-none");
 			$("#msg-error").removeClass("d-block");
     	}
+    	habilitarBotones(form, true);
     	
     	$.ajax({
 	    	type:'POST',
@@ -180,7 +184,7 @@ function ajaxForms(form){
             data: dataForm,
             datatype: "text",
             success: function( response ) {
-                habilitarBotones(form);
+                habilitarBotones(form, false);
             	$(form).find(".btn-submit").html('Buscar');
                 
                 if(response.informacion == "error"){
@@ -219,7 +223,7 @@ function ajaxForms(form){
         if($(".file-error").hasClass("d-none") === false){
             $(".file-error").addClass("d-none");
         }
-
+		habilitarBotones(form, true);
 
         $.ajax({
         	type: 'POST',
@@ -228,7 +232,7 @@ function ajaxForms(form){
             contentType: false,
             processData: false,
             success: function(response){
-            	habilitarBotones(form);
+            	habilitarBotones(form, false);
             	$(form).find(".btn-submit").html('Crear'); // CAMBIAMOS EL CONTENIDO DEL BOTON SUBMIT
             	
             	if(response.informacion == "error"){
@@ -280,7 +284,7 @@ function ajaxForms(form){
         if($("#error-buscar").hasClass("d-none") === false){
             $("#error-buscar").addClass("d-none");
         }
-
+		habilitarBotones(form, true);
 
         $.ajax({
         	type: 'POST',
@@ -288,7 +292,7 @@ function ajaxForms(form){
             data: dataForm,
             datatype: "text",
             success: function( response ){
-            	habilitarBotones(form);
+            	habilitarBotones(form, false);
             	$(form).find(".btn-submit").html('Crear'); // CAMBIAMOS EL CONTENIDO DEL BOTON SUBMIT
                 $(form).trigger("reset");
             	$(form).removeClass('was-validated');
@@ -318,7 +322,7 @@ function ajaxForms(form){
         if($(".file-error").hasClass("d-none") === false){
             $(".file-error").addClass("d-none");
         }
-
+		habilitarBotones(form, true);
 
         $.ajax({
         	type: 'POST',
@@ -327,7 +331,7 @@ function ajaxForms(form){
             contentType: false,
             processData: false,
             success: function(response){
-            	habilitarBotones(form);
+            	habilitarBotones(form, false);
             	$(form).find(".btn-submit").html('Crear'); // CAMBIAMOS EL CONTENIDO DEL BOTON SUBMIT
             	
             	if(response.informacion == "error"){
@@ -376,14 +380,15 @@ function ajaxForms(form){
     }
     else if($(form).attr("id") === "formClienteIndividual"){
     	let dataForm = $(form).serialize()+"&opcion=crear";
-
+		habilitarBotones(form, true);
+		
         $.ajax({
         	type: 'POST',
             url: "../clientesServlet",
             data: dataForm,
             datatype: "text",
             success: function( response ){
-            	habilitarBotones(form);
+            	habilitarBotones(form, false);
             	$(form).find(".btn-submit").html('Crear'); // CAMBIAMOS EL CONTENIDO DEL BOTON SUBMIT
                 $(form).trigger("reset");
             	$(form).removeClass('was-validated');
@@ -402,14 +407,14 @@ function ajaxForms(form){
     }
     else if($(form).attr("id") === "formClienteEdicion"){
     	let dataForm = $(form).serialize()+"&opcion=editar";
-
+		habilitarBotones(form, true);
         $.ajax({
         	type: 'POST',
             url: "../clientesServlet",
             data: dataForm,
             datatype: "text",
             success: function( response ){
-            	habilitarBotones(form);
+            	habilitarBotones(form, false);
             	$(form).find(".btn-submit").html('Crear'); // CAMBIAMOS EL CONTENIDO DEL BOTON SUBMIT
                 $(form).trigger("reset");
             	$(form).removeClass('was-validated');
@@ -435,6 +440,7 @@ function ajaxForms(form){
 			$("#msg-error").addClass("d-none");
 			$("#msg-error").removeClass("d-block");
     	}
+    	habilitarBotones(form, true);
     	
     	$.ajax({
 	    	type:'POST',
@@ -442,7 +448,7 @@ function ajaxForms(form){
             data: dataForm,
             datatype: "text",
             success: function( response ) {
-                habilitarBotones(form);
+                habilitarBotones(form, false);
             	$(form).find(".btn-submit").html('Buscar');
                 
                 if(response.informacion == "error"){
@@ -486,7 +492,6 @@ function ajaxForms(form){
     	"Descuento":$("#txtDescuentoConcepto").val(),
     	"Placa":$("#txtPlacaConcepto option:selected").val()
     	};
-    	
 	    if(miArray === null){
 	        miArray = [objeto];
 	    }
@@ -498,7 +503,6 @@ function ajaxForms(form){
 	    $(form).parents('.modal').modal('hide');
 	    localStorage.setItem("conceptos", JSON.stringify(miArray));
 	    
-	    habilitarBotones(form);
     	$(form).find(".btn-submit").html('Crear');
     	$(form).trigger("reset");
     	$(form).removeClass('was-validated');
@@ -515,7 +519,6 @@ function ajaxForms(form){
 		}
 		localStorage.removeItem('conceptos');
 		localStorage.setItem('conceptos', JSON.stringify(miArray));
-		habilitarBotones(form);
     	$(form).find(".btn-submit").html('SI');
     	$(form).trigger("reset");
     	$(form).removeClass('was-validated');
@@ -538,6 +541,7 @@ function ajaxForms(form){
     	};
     	
     	localStorage.removeItem('conceptos');
+    	habilitarBotones(form, true);
     	
     	$.ajax({
 	    	type:'POST',
@@ -545,7 +549,7 @@ function ajaxForms(form){
             data: dataForm,
             datatype: "text",
             success: function( response ){
-            	habilitarBotones(form);
+            	habilitarBotones(form, false);
             	$(form).find(".btn-submit").html('Crear');
                 $(form).trigger("reset");
             	$(form).removeClass('was-validated');
@@ -571,6 +575,7 @@ function ajaxForms(form){
 			$("#msg-error").addClass("d-none");
 			$("#msg-error").removeClass("d-block");
     	}
+    	habilitarBotones(form, true);
     	
     	$.ajax({
 	    	type:'POST',
@@ -578,7 +583,7 @@ function ajaxForms(form){
             data: dataForm,
             datatype: "text",
             success: function( response ) {
-                habilitarBotones(form);
+                habilitarBotones(form, false);
             	$(form).find(".btn-submit").html('Buscar');
                 
                 if(response.informacion == "error"){
@@ -627,6 +632,7 @@ function busqueda(form){
 								  	<strong>Cargando...</strong>
 								  	<div class="spinner-border ml-1 spinner-border-sm" role="status" aria-hidden="true"></div>
 								</div>`);
+		habilitarBotones(form, true);
 		
 		$.ajax({
 			type:'POST',
@@ -634,7 +640,7 @@ function busqueda(form){
             data: dataForm,
             datatype: "text",
             success: function(response){
-            	habilitarBotones(form);
+            	habilitarBotones(form, false);
             	if(response.informacion == "error"){
             		$("#error-buscar").removeClass("text-secondary");
             		$("#error-buscar").addClass("text-danger");
@@ -673,6 +679,7 @@ function busqueda(form){
 								  	<strong>Cargando...</strong>
 								  	<div class="spinner-border ml-1 spinner-border-sm" role="status" aria-hidden="true"></div>
 								</div>`);
+		habilitarBotones(form, true);
 		
 		$.ajax({
 			type:'POST',
@@ -680,7 +687,7 @@ function busqueda(form){
             data: dataForm,
             datatype: "text",
             success: function(response){
-            	habilitarBotones(form);
+            	habilitarBotones(form, false);
             	if(response.informacion == "error"){
             		$("#error-buscar").removeClass("text-secondary");
             		$("#error-buscar").addClass("text-danger");
@@ -714,22 +721,17 @@ function busqueda(form){
 	}
 }
 
-function habilitarBotones(form){
-
-	// DESAHBILITAMOS EL BOTON SUBMIT DEL FORMULARIO
-    $(form).find(".btn-submit").prop( "disabled", false );
+// FUNCION PARA HABILITAR BOTONES
+function habilitarBotones(form, opcion){
 
     // VALIDAMOS SI EL FORMULARIO ESTA DENTRO DE UN MODAL
-    if($(form).parents('.modal-content') != undefined){
-        // EN CASO DE QUE EL FORMULARIO SEA DE UN MODAL, DESHABILITAMOS TODOS LOS BOTONES DE CERRAR
-        $(form).parents('.modal-content').find(".btn-close").prop( "disabled", false );
-
-        if($(form).parents('.modal-content').find(".nav-tabs") != undefined){
-            $(form).parents('.modal-content').find(".nav-item").prop( "disabled", false );
-        }
+    if($(form).parents('.modal').attr("id") != undefined){
+    
+        // EN CASO DE QUE EL FORMULARIO SEA DE UN MODAL, DESHABILITAMOS TODOS LOS CONTROLES DEL MODAL
+        $(form).parents('.modal').find("*").attr( "disabled", opcion );
     }
     else{
         // EN CASO CONTRARIO SOLO DESHABILITAMOS LOS BOTONES DE CERRAR QUE ESTÁN DENTRO DEL FORMULARIO FORMULARIO
-        $(form).find(".btn-close").prop( "disabled", false );
+        $(form).find("*").attr( "disabled", opcion );
     }
 }

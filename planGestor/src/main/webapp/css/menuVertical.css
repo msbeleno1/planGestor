@@ -83,7 +83,7 @@ nav.main-menu li.active>a,
 .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
 .dashboard-page nav.dashboard-menu ul li.active a {
     color:#fff;
-    background-color:#9e1a1a;
+    background-color: rgb(0, 126, 126);
     width: 100%;
 }
 

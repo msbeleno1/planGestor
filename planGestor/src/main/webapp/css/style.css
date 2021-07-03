@@ -3,16 +3,36 @@
     font-family: 'Titillium Web', sans-serif;
 }
 
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
 .lead{
     font-family: 'Titillium Web', sans-serif !important;
 }
 
 .btn-red{
-    background-color: rgb(161, 7, 7);
+    background-color: rgb(0, 126, 126);
+}
+
+.btn-danger{
+    background-color: rgb(0, 126, 126) !important;
+    border-color: rgb(0, 126, 126) !important;
+}
+
+.text-darkcyan{
+	color:rgb(0, 126, 126) !important;
 }
 
 .bg-red{
-    background-color: rgb(161, 7, 7);
+    background-color: rgb(0, 126, 126);
 }
 
 .aling-text-center{
@@ -122,7 +142,7 @@ footer h6{
 }
 
 .dropdown-menu .dropdown-item:active{
-    background-color:rgb(161, 7, 7);
+    background-color:rgb(0, 126, 126);
 }
 /*------------------- HEADER PERSONALIZADO ---------------*/
 
@@ -131,13 +151,13 @@ footer h6{
 
 .btn-red:hover,
 .btn-red:hover > em{
-    color: rgb(161, 7, 7);
+    color: rgb(0, 126, 126);
     background-color:rgb(179, 178, 178);
 }
 
 div .btn-red{
     color:rgb(223, 223, 223);
-    background-color:rgb(161, 7, 7);
+    background-color:rgb(0, 126, 126);
 }
 
 
@@ -151,7 +171,7 @@ div .btn-red{
 }
 
 .card-title{
-    color: rgb(161, 7, 7);
+    color: rgb(0, 126, 126);
 }
 
 .card-text {
@@ -164,7 +184,7 @@ div .btn-red{
 .card:active > .card-img-top,
 .card:active > .card-text,
 .card:active > .card-title{
-    color: rgb(161, 7, 7);
+    color: rgb(0, 126, 126);
 }
 
 
@@ -175,25 +195,31 @@ div .btn-red{
 /*                                  ESTILOS PAGINAS DE CONSULTA PQR                               */
 
 /*------------------- COLORES DE TABLAS PERSONALIZADOS ---------------*/
+table{
+    width: 100%;
+}
+
+.page-item:last-child .page-link,
+.page-link{
+    color:rgb(0, 126, 126) !important;
+    transition: all 0.4s;
+}
+
 .page-item.active .page-link{
-	background-color:rgb(161, 7, 7) !important;
+    background-color: rgb(0, 126, 126) !important;
     color:rgb(223, 223, 223) !important;
-    border-color: rgb(161, 7, 7) !important;
+    transition: all 0.4s;
 }
 
-.page-item.active .page-link:hover{
-	background-color:rgb(223, 223, 223) !important;
-    color:rgb(161, 7, 7) !important;
-    border-color: rgb(161, 7, 7) !important;
+div.dataTables_info{
+    white-space: nowrap;
 }
 
-a.page-link{
-	color:rgb(180, 180, 180) !important;
-}
-
-a.page-link:hover{
-	color:rgb(161, 7, 7) !important;
-	background-color:rgb(243, 243, 243) !important;
+table.table-bordered.dataTable tbody td{
+    text-align: center;
+    white-space: nowrap;
+    padding: 0;
+    vertical-align: middle;
 }
 
 
